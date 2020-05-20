@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
       username == Rails.application.credentials[:basic_auth][:user] &&
       password == Rails.application.credentials[:basic_auth][:pass]
     end
-    def production?
-      Rails.env.production?
-    end
+  end
+  def production?
+    Rails.env.production?
   end
 end
