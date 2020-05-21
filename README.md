@@ -27,11 +27,11 @@ Things you may want to cover:
 
 
 ### Association
-has_many :items
-has_many :comments
-has_many :item_images
-belongs_to :deliver_adresses
-belongs_to :credit_info
+- has_many :items
+- has_many :comments
+- has_many :item_images
+- belongs_to :deliver_adresses
+- belongs_to :credit_info
 
 ## itemsテーブル
 
@@ -51,10 +51,10 @@ belongs_to :credit_info
 
 
 ### Association
-has_many :comments
-has_many :item_images
-belongs_to :user
-belongs_to :category
+- has_many :comments
+- has_many :item_images
+- belongs_to :user
+- belongs_to :category
 
 ## deliver_adressesテーブル
 
@@ -70,7 +70,7 @@ belongs_to :category
 
 
 ### Association
-belongs_to :user
+- belongs_to :user
 
 ## credit_infoテーブル
 
@@ -84,7 +84,7 @@ belongs_to :user
 
 
 ### Association
-belongs_to :user
+- belongs_to :user
 
 ## categoryテーブル
 
@@ -94,7 +94,7 @@ belongs_to :user
 
 
 ### Association
-belongs_to :item
+- belongs_to :item
 
 ## commentsテーブル
 
@@ -106,8 +106,8 @@ belongs_to :item
 
 
 ### Association
-belongs_to :user
-belongs_to :item
+- belongs_to :user
+- belongs_to :item
 
 ## item_imageテーブル
 
@@ -119,8 +119,8 @@ belongs_to :item
 
 
 ### Association
-belongs_to :user
-belongs_to :item
+- belongs_to :user
+- belongs_to :item
 
 * Database initialization
 
