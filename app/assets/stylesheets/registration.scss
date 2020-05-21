@@ -1,0 +1,124 @@
+.registration-container {
+  background-color: menu;
+  height: 100vh;
+  overflow: scroll;
+  .registration-header {
+    width: 100%;
+    height: 125px;
+    position: relative;
+    .furima-logo-box {
+    height: 62px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+      .furima-logo {
+        background-image: url(material/logo/logo.png);
+        background-repeat: no-repeat;
+        height: 62px;
+        background-size: 100%;
+        line-height: 150px;
+        text-align: center;
+      }
+    }
+  }
+  .registration-box {
+    height: 1000px;
+    width: 600px;
+    background-color: white;
+    margin: 0 auto;
+    .registration-text {
+      padding: 5% 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-bottom: 1px solid #eeeeee;
+    }
+    .registration-form {
+      padding: 32px 64px;
+      .l-single-content {
+        margin: 0 80px;
+        .form-group {
+          margin-top: 24px;
+          width: 100%;
+          .form-require {
+            display: inline-block;
+            text-align: center;
+            background-color: red;
+            color: #FFF;
+            position: relative;
+            font-size: 13px;
+            padding: 1px 2px;
+            border-radius: 2px;
+            margin-bottom:3px;
+          }
+          .login-input-text {
+            margin: 0;
+            width: 100%;
+            height: 48px;
+          }
+          .select-box {
+            height: 50px;
+            background: white;
+          }
+        }
+        .login-submit {
+          background: #ea352d;
+          color: #fff;
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          border: 1px solid transparent;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+          margin-top: 30px;
+        }
+        .forget-pass {
+          margin-top: 50px;
+          text-decoration: none;
+          color: skyblue;
+        }
+      }
+    }
+  }
+  .login-footer {
+    width: 456px;
+    margin: 0 auto;
+    z-index: 1;
+    height: 150px;
+    padding: 40px 0;
+    text-align: center;
+    nav {
+      display: block;
+      ul {
+        font-size: 0;
+        margin-bottom: 20px;
+        li {
+          margin: 0;
+          font-size: 12px;
+          display: inline-block;
+          margin: 0 0 0 16px;
+          a {
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+    .footer-logo {
+      height: 62px;
+      width: 200px;
+      left: 50%;
+      -webkit-transform : translate(-50%,-50%);
+      transform : translate(-50%,-50%);
+      margin-top: 40px;
+    }
+    .copyright {
+      // margin-top: 30px;
+    }
+  }
+}
