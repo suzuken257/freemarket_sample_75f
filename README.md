@@ -19,6 +19,7 @@ Things you may want to cover:
 |username|string|null:false|
 |username_kana|string|null:false|
 |nickname|string|null:false|
+|introduction|text||
 |email|string|null:false, unique: true, index:true|
 |password|string|null:false|
 |birth_year|integer|null:false|
@@ -27,11 +28,10 @@ Things you may want to cover:
 
 
 ### Association
-- has_many :items
-- has_many :comments
-- has_many :item_images
-- belongs_to :deliver_adresses
-- belongs_to :credit_info
+- has_many :items dependent::destoroy
+- has_many :comments dependent::destoroy
+- belongs_to :deliver_adresses dependent::destoroy
+- belongs_to :credit_info dependent::destoroy
 
 ## itemsテーブル
 
@@ -116,12 +116,10 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |image_url|text|null:false|
-|user_id|references|null: false, foreign_key: true|
 |item_id|references|null: false, foreign_key: true|
 
 
 ### Association
-- belongs_to :user
 - belongs_to :item
 
 * Database initialization
