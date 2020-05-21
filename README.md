@@ -91,10 +91,12 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null:false|
+|ancestry|string||
 
 
 ### Association
-- belongs_to :item
+- has_to :items
+- has_ancestry
 
 ## commentsテーブル
 
