@@ -65,8 +65,8 @@
           %ul.brandsPulldown.displayNone
       %ul.listsRight
         %li.listsRight__item.listsRight__item--login
-          = link_to "#" do
-            ログイン
+          = link_to "ログイン", new_user_session_path
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
         %li.listsRight__item.listsRight__item--new
-          = link_to "#" do
-            新規会員登録
+          = link_to "新規登録", new_user_registration_path
+          = link_to "商品送付先住所情報", new_deliver_address_path
