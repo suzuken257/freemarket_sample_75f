@@ -1,0 +1,72 @@
+.header
+  .header__box
+    .header__box__in
+      %h1.icon
+        = link_to "/" do
+          = image_tag "images/logo/logo.png"
+      .search
+        %form{"accept-charset": "UTF-8", action: "#", method: "get"}
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input#searchInput.searchBox--input{name: "key", placeholder: "キーワードから探す"}/
+          %button{type: "submit"}
+            .search__icon
+              = image_tag "images/icon/icon-search 1.png"
+          %input{name: "authenticity_token", type: "hidden", value: "9s7mpob4L+ENFcSPkww7NwNnfuC8gyy/Ku/RUZ23cIY4vg88Js/QW35xXx/ZNTjjDGJxsv2lwAjWWqTIXxHElw=="}/
+      %ul.resultLists
+    .nav
+      %ul.listsLeft
+        %li.listsLeft__item.listsLeft__item--first
+          = link_to "#" do
+            カテゴリー
+          .tree.displayNone
+            %ul.categoryTree
+              %li.categoryTree--item
+                = link_to "#" do 
+                  レディース
+              %li.categoryTree--item
+                = link_to "#" do 
+                  メンズ
+              %li.categoryTree--item
+                = link_to "#" do 
+                  ベビー・キッズ
+              %li.categoryTree--item
+                = link_to "#" do
+                  インテリア・住まい・小物
+              %li.categoryTree--item
+                = link_to "#" do 
+                  本・音楽・ゲーム
+              %li.categoryTree--item
+                = link_to "#" do
+                  おもちゃ・ホビー・グッズ
+              %li.categoryTree--item
+                = link_to "#" do
+                  コスメ・香水・美容
+              %li.categoryTree--item
+                = link_to "#" do
+                  家電・スマホ・カメラ
+              %li.categoryTree--item
+                = link_to "#" do
+                  スポーツ・レジャー
+              %li.categoryTree--item
+                = link_to "#" do
+                  ハンドメイド
+              %li.categoryTree--item
+                = link_to "#" do
+                  チケット
+              %li.categoryTree--item
+                = link_to "#" do
+                  自動車・オートバイ
+              %li.categoryTree--item
+                = link_to "#" do
+                  その他
+        %li.listsLeft__item
+          = link_to "#" do 
+            ブランド
+          %ul.brandsPulldown.displayNone
+      %ul.listsRight
+        %li.listsRight__item.listsRight__item--login
+          = link_to "#" do
+            ログイン
+        %li.listsRight__item.listsRight__item--new
+          = link_to "#" do
+            新規会員登録
