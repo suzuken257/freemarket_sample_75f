@@ -4,16 +4,16 @@
       %h2.l-chapter-head 発送元・お届け先住所変更
       = form_with model: @deliver_address, url: deliver_addresses_path, id: 'l-single-inner', class: 'l-single-inner', local: true do |f|
         .l-single-content
-          -# .form-group
-          -#   %label{:for => "name"} お名前
-          -#   %span.form-require 必須
-          -#   = f.text_field :family_name, autofocus: true, placeholder: "例) 山田", class:"input-default"
-          -#   = f.text_field :first_name, autofocus: true, placeholder: "例) 彩", class:"input-default"
-          -# .form-group
-          -#   %label{:for => "name"} お名前カナ
-          -#   %span.form-require 必須
-          -#   = f.text_field :family_name_kana,autofocus: true, placeholder: "例) ヤマダ", class:"input-default"
-          -#   = f.text_field :first_name_kana,autofocus: true, placeholder: "例) アヤ", class:"input-default"
+          .form-group
+            %label{:for => "name"} お名前
+            %span.form-require 必須
+            = f.text_field :family_name, autofocus: true, placeholder: "例) 山田", class:"input-default"
+            = f.text_field :first_name, autofocus: true, placeholder: "例) 彩", class:"input-default"
+          .form-group
+            %label{:for => "name"} お名前カナ
+            %span.form-require 必須
+            = f.text_field :family_name_kana,autofocus: true, placeholder: "例) ヤマダ", class:"input-default"
+            = f.text_field :first_name_kana,autofocus: true, placeholder: "例) アヤ", class:"input-default"
           .form-group
             %label{:for => "zip_code"} 郵便番号
             %span.form-require 必須
