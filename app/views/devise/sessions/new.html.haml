@@ -13,13 +13,13 @@
           %i.icon-facebook
           Facebookでログイン
         %button.btn-google Googleでログイン
-      %form{:action => "#", :method => "POST", :novalidate => "novalidate"}
+      = form_with model: @user, url: new_user_session_path, id: 'login_user', class: 'login_user', local: true do |f|
         .login-form
           .form-group
-            %input.login-input-text{:name => "email", :placeholder => "メールアドレス", :type => "email"}/
+            = f.email_field :email, placeholder:"メールアドレス",class: "login-input-text"
           .form-group
-            %input.login-input-text{:name => "password", :placeholder => "パスワード", :type => "password"}/
-          %button.login-submit{:type => "submit"} ログイン
+            = f.password_field :password, autocomplete: "off", placeholder: "パスワード",class: "login-input-text"
+          = f.submit "ログイン", class: "login-submit"
           %a.forget-pass(href="#")  パスワードをお忘れの方
     %form#login_form_facebook{:action => "#", :method => "POST", :novalidate => "novalidate"}
   %footer.login-footer

@@ -13,16 +13,19 @@
 ActiveRecord::Schema.define(version: 2020_05_21_102738) do
 
   create_table "deliver_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name"
+    t.string "first_name"
+    t.string "family_name_kana"
+    t.string "first_name_kana"
     t.string "zip_code", null: false
-    t.string "prefecture", null: false
+    t.string "prefecture"
     t.string "city", null: false
     t.string "address1", null: false
     t.string "apartment_address"
-    t.integer "telephone"
-    t.bigint "user_id"
+    t.bigint "telephone"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_deliver_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -46,5 +49,4 @@ ActiveRecord::Schema.define(version: 2020_05_21_102738) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "deliver_addresses", "users"
 end
