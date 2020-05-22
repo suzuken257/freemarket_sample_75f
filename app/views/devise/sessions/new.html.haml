@@ -7,7 +7,7 @@
     .login-panel
       .login-no-account
         %p アカウントをお持ちでない方はこちら
-        %a(href="#") 新規会員登録
+        =link_to "新規会員登録", new_user_registration_path
       .login-form
         %button.btn-facebook
           %i.icon-facebook
