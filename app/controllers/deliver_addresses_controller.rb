@@ -5,6 +5,7 @@ class DeliverAddressesController < ApplicationController
   def create
     @deliver_address=DeliverAddress.new(deliver_address_params)
     @deliver_address.save
+    redirect_to "/"
   end
 
   private 
