@@ -9,6 +9,6 @@ class DeliverAddressesController < ApplicationController
 
   private 
   def deliver_address_params
-    params.require(:deliver_address).permit(:family_name,:first_name,:family_name_kana,:first_name_kana,:zip_code, :prefecture, :city, :address1, :apartment_address, :telephone).merge(user_id: current_user.id)
+    params.require(:deliver_address).permit(:family_name,:first_name,:family_name_kana,:first_name_kana,:zip_code, :prefecture_id, :city, :address1, :apartment_address, :telephone).merge(user_id: current_user.id)
   end
 end
