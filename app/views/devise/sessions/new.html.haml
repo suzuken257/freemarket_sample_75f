@@ -1,0 +1,37 @@
+.login-container
+  %header.login-header
+    %h1
+      =link_to root_path do
+        = image_tag "material/logo/logo.png", size: "200x62"
+  %main.login-main
+    .login-panel
+      .login-no-account
+        %p アカウントをお持ちでない方はこちら
+        =link_to "新規会員登録", new_user_registration_path
+      .login-form
+        %button.btn-facebook
+          %i.icon-facebook
+          Facebookでログイン
+        %button.btn-google Googleでログイン
+      = form_with model: @user, url: new_user_session_path, id: 'login_user', class: 'login_user', local: true do |f|
+        .login-form
+          .form-group
+            = f.email_field :email, placeholder:"メールアドレス",class: "login-input-text"
+          .form-group
+            = f.password_field :password, autocomplete: "off", placeholder: "パスワード",class: "login-input-text"
+          = f.submit "ログイン", class: "login-submit"
+          %a.forget-pass(href="#")  パスワードをお忘れの方
+    %form#login_form_facebook{:action => "#", :method => "POST", :novalidate => "novalidate"}
+  %footer.login-footer
+    %nav
+      %ul.clearfix
+        %li
+          %a(href="#") プライバシーポリシー
+        %li
+          %a(href="#") フリマ利用規約
+        %li
+          %a(href="#") 特定商取引に関する表記
+    %a.footer-logo(href="#")
+      = image_tag "material/logo/logo-white.png", size: "100x70"
+    %p
+      %small © furima, Inc.

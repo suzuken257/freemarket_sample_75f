@@ -1,0 +1,65 @@
+.registration-container
+  %header.registration-header
+    .furima-logo-box
+      = link_to root_path do
+        .furima-logo
+  .registration-box
+    .registration-text 会員情報入力
+    = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+      .registration-form
+        = devise_error_messages!
+        .l-single-content
+          .form-group
+            =f.label:'ニックネーム'
+            %span.form-require 必須
+            %br
+            = f.text_field :nickname, autofocus: true, placeholder: "例）フリマ太郎", class:"login-input-text"
+          .form-group
+            =f.label:'メールアドレス'
+            %span.form-require 必須
+            %br
+            = f.email_field :email, placeholder: "PC・携帯どちらでも可",class:"login-input-text"
+          .form-group
+            =f.label:'パスワード'
+            %span.form-require 必須
+            %br
+            = f.password_field :password, autocomplete: "off", placeholder: "7文字以上", class:"login-input-text"
+          .form-group
+            =f.label:"パスワード(確認)"
+            %span.form-require 必須
+            %br
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "7文字以上",class:"login-input-text"
+          .form-group
+            =f.label:"お名前(全角)"
+            %span.form-require 必須
+            %br
+            = f.text_field :family_name, autofocus: true, placeholder: "苗字", class:"login-input-text-name"
+            %span= f.text_field :first_name, autofocus: true, placeholder: "名前", class:"login-input-text-name"
+          .form-group
+            =f.label:"お名前かな(全角)"
+            %span.form-require 必須
+            %br
+            = f.text_field :family_name_kana, autofocus: true, placeholder: "苗字(かな)", class:"login-input-text-name"
+            %span= f.text_field :first_name_kana, autofocus: true, placeholder: "名前(かな)", class:"login-input-text-name"
+          .form-group
+            =f.label:'生年月日'
+            %span.form-require 必須
+            %br
+            != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'select-box', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+            %br/
+            %br/
+          = f.submit "次へ", class: "login-submit"
+  %footer.login-footer
+    %nav
+      %ul.clearfix
+        %li
+          %a(href="#") プライバシーポリシー
+        %li
+          %a(href="#") フリマ利用規約
+        %li
+          %a(href="#") 特定商取引に関する表記
+      %a.footer-logo(href="#")
+        = image_tag "material/logo/logo-white.png", size: "120x70"
+    .copyright
+      %p
+        %small © furima, Inc.
