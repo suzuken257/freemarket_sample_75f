@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_084322) do
-
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "name", null: false
-    t.string "ancestry"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2020_05_25_090214) do
 
   create_table "deliver_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name"
@@ -41,16 +34,14 @@ ActiveRecord::Schema.define(version: 2020_05_25_084322) do
     t.text "introduction", null: false
     t.string "brand"
     t.integer "size"
-    t.string "item_status", null: false
-    t.string "Shipping_fee_burden", null: false
-    t.string "Shipping_area_from", null: false
-    t.string "Estimated_shipping_date", null: false
-    t.bigint "user_id"
-    t.bigint "category_id"
+    t.string "item_status"
+    t.string "shipping_fee_burden"
+    t.string "shipping_area_from", null: false
+    t.string "estimated_shipping_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
