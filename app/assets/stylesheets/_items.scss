@@ -5,13 +5,97 @@
   justify-content: space-between;
   padding: 40px;
   .item_info{
+    background-color: #fff;
+    width: 600px;
+    margin: 0 auto;
+    padding: 24px 40px 40px;
     .item_name{
-      color: green;
+      font-weight: bold;
+      font-size: 24px;
+      text-align: center;
+    }
+    .item_price{
+      height: 60px;
+      font-weight: bold;
+      font-size: 46px;
+      text-align: center;
+    }
+    .price_info{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .other_info{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+      cursor: pointer;
+      .favorite_total{
+        color: #3ccace;
+        height: 32px;
+        width: 120px;
+        line-height: 32px;
+        border: 1px solid orange;
+        border-radius: 40px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 10px;
+      }
+      .report_btn{
+        height: 32px;
+        width: 160px;
+        line-height: 32px;
+        font-size: 14px;
+        border: 1px solid black;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 5px;
+      }
+    }
+  }
+  .comment_contents{
+    background-color: #fff;
+    width: 600px;
+    margin: 10px auto;
+    padding: 24px 40px 40px;
+    .comment_lists{
+
+    }
+    .comment_form{
+      min-height: 104px;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid black;
+    }
+    .comment_attention{
+      padding: 8px;
+      font-size: 14px;
+      background-color: #f8f8f8;
+      margin: 10px 0;
+      text-align: left;
+    }
+    .comment_submit{
+      height: 48px;
+      width: 370px;
+      line-height: 48px;
+      color: white;
+      font-size: 18px;
+      margin: 0 auto;
+      margin-top: 30px;
+      background-color: #3ccace;
+      border-radius: 100px;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
     }
   }
   .switch_item{
+    width: 680px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
     .prev_item{
       color: #3ccace;
     }
@@ -19,12 +103,13 @@
       color: #3ccace;
     }
   }
-  .switch_item p{
-    color: red;
-  }
   .show_corresponding_category_lists{
+    width: 680px;
     color: #3ccace;
     font-size: 22px;
     font-weight: bold;
+    margin: 0 auto;
+    margin-top: 30px;
+    cursor: pointer;
   }
 }
