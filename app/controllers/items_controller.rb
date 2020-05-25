@@ -7,8 +7,8 @@ class ItemsController < ApplicationController
   end
   def create
     @item=Item.new(item_params)
-    Item.create
-    redirect_to "/"
+    @item.save
+    redirect_to root_path
   end
   private
   def item_params
