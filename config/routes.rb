@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :items
   resources :deliver_addresses, only:[:new, :create]
+  resources :users, only: :show
 end
