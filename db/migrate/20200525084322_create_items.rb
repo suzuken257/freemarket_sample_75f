@@ -11,7 +11,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :Shipping_area_from,              null:false
       t.string :Estimated_shipping_date,         null:false
       t.references :user, foreign_key: true
-      t.references :category_id, foreign_key: true
+      t.references :category, foreign_key: true
       t.timestamps
     end
   end
