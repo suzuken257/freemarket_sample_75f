@@ -13,6 +13,12 @@ class ItemsController < ApplicationController
       render "new"
     end
   end
+
+  def purchase_confirmation
+    @item = Item.find(params[:id])
+    @items = @item.purchase_confirmation
+  end
+
   private
   def item_params
     params.require(item).permit(:name,:introduction,:shipping_area_from,:price).merge(user_id: current_user.id)
