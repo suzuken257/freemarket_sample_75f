@@ -1,0 +1,30 @@
+.main{
+  background-color: #f8f8f8;
+  display:flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 40px;
+  .item_info{
+    .item_name{
+      color: green;
+    }
+  }
+  .switch_item{
+    display: flex;
+    justify-content: space-between;
+    .prev_item{
+      color: #3ccace;
+    }
+    .next_item{
+      color: #3ccace;
+    }
+  }
+  .switch_item p{
+    color: red;
+  }
+  .show_corresponding_category_lists{
+    color: #3ccace;
+    font-size: 22px;
+    font-weight: bold;
+  }
+}
