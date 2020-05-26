@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item=Item.new
+    @item = Item.new
   end
   def create
     @item=Item.new(item_params)
@@ -14,8 +14,9 @@ class ItemsController < ApplicationController
       render "new"
     end
   end
+
   private
   def item_params
-    params.require(item).permit(:name,:introduction,:shipping_area_from,:price).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:introduction,:price).merge(user_id: current_user.id)
   end
 end
