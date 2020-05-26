@@ -33,6 +33,7 @@ Things you may want to cover:
 - belongs_to :deliver_adresses dependent::destoroy
 - belongs_to :credit_info dependent::destoroy
 
+
 ## itemsテーブル
 
 |Column|Type|Options|
