@@ -32,11 +32,14 @@
           %tr
             %th カテゴリー
             %td
-              %a{:href => "#"} ベビー・キッズ
+              %a
+              = link_to "ベビー・キッズ","#"
               %br/
-              %a{:href => "#"} ベビー服(男女兼用)  ~95cm
+              %a
+              = link_to "ベビー服(男女兼用)  ~95cm","#"
               %br/
-              %a{:href => "#"} アウター
+              %a
+              = link_to "アウター","#"
           %tr
             %th ブランド
             %td
@@ -52,7 +55,8 @@
           %tr
             %th 発送元の地域
             %td
-              %a{:href => "#"} 岩手県
+              %a
+              = link_to "岩手県","#"
           %tr
             %th 発送日の目安
             %td 4-7日で発送
@@ -63,7 +67,6 @@
         不適切な商品の通報
   .comment_contents
     .comment_lists
-    -# .comment_form
     %form#comment_form.comment_form{"accept-charset" => "UTF-8", :action => "#", :method => "post"}
       %input{:name => "utf8", :type => "hidden", :value => "✓"}/
       %input{:name => "authenticity_token", :type => "hidden", :value => "TXlsjnDAoJ5qNus786Y/pytiVJD9qQvsN8zrFoETGzk00YZZ8y2qs5vulE8Ox8tk8m1sBXlpZwQqcUrHi+bQFQ=="}/
