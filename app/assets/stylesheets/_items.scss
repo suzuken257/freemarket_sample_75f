@@ -14,6 +14,23 @@
       font-size: 24px;
       text-align: center;
     }
+    .item_image{
+      .selected_image{
+        text-align: center;
+        img{
+          height: 346px;
+          width: 560px;
+        }
+      }
+      .images{
+        display: flex;
+        justify-content: center;
+        img{
+          height: 180px;
+          width: 180px;
+        }
+      }
+    }
     .item_price{
       height: 60px;
       font-weight: bold;
@@ -24,6 +41,35 @@
       display: flex;
       justify-content: center;
       margin-bottom: 24px;
+    }
+    .item_detail{
+      margin-top: 15px;
+      table{
+        width: 600px;
+        height: 375px;
+        tbody{
+          tr{
+            th{
+              width: 20%;
+              background-color: #eee;
+              padding: 8px;
+              border: 1px solid #dedede;
+              font-size: 14px;
+              text-align: center;
+            }
+            td{
+              width: 61%;
+              padding: 15px 15px;
+              border: 1px solid #dedede;
+              font-size: 14px;
+              a{
+                text-decoration: none;
+                color: #3ccace;
+              }
+            }
+          }
+        }
+      }
     }
     .other_info{
       display: flex;
@@ -37,8 +83,7 @@
         line-height: 32px;
         border: 1px solid orange;
         border-radius: 40px;
-        display: flex;
-        justify-content: space-between;
+        text-align: center;
         padding: 0px 10px;
       }
       .report_btn{
@@ -48,8 +93,7 @@
         font-size: 14px;
         border: 1px solid black;
         border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
+        text-align: center;
         padding: 0px 5px;
       }
     }
@@ -60,14 +104,20 @@
     margin: 10px auto;
     padding: 24px 40px 40px;
     .comment_lists{
-
     }
-    .comment_form{
-      min-height: 104px;
-      padding: 8px;
-      margin-bottom: 15px;
-      border: 1px solid black;
+    form#comment_form{
+      textarea#comment_body{
+        width: 580px;
+        min-height: 104px;
+        padding: 10px;
+      }
     }
+    // .comment_form{
+    //   min-height: 104px;
+    //   padding: 8px;
+    //   margin-bottom: 15px;
+    //   border: 1px solid black;
+    // }
     .comment_attention{
       padding: 8px;
       font-size: 14px;
@@ -75,7 +125,7 @@
       margin: 10px 0;
       text-align: left;
     }
-    .comment_submit{
+    button.comment_submit{
       height: 48px;
       width: 370px;
       line-height: 48px;
@@ -85,6 +135,7 @@
       margin-top: 30px;
       background-color: #3ccace;
       border-radius: 100px;
+      border: 2px solid white;
       display: flex;
       justify-content: center;
       cursor: pointer;
