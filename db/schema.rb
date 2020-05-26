@@ -52,20 +52,12 @@ ActiveRecord::Schema.define(version: 2020_05_26_024138) do
     t.string "item_status", null: false
     t.string "shipping_fee_burden", null: false
     t.string "shipping_area_from", null: false
-<<<<<<< Updated upstream
     t.string "estimated_shipping_date"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
-    t.string "estimated_shipping_date", null: false
-    t.bigint "user_id"
-    t.bigint "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
->>>>>>> Stashed changes
     t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -89,10 +81,9 @@ ActiveRecord::Schema.define(version: 2020_05_26_024138) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< Updated upstream
-=======
+
+
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
->>>>>>> Stashed changes
   add_foreign_key "items", "users"
 end
