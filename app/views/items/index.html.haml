@@ -1,6 +1,8 @@
 .wrappre
   = render "header"
   .main
+    = link_to "出品", new_item_path, class: "contents" do
+      = render @items 
     %section.main__box
       .main__content
         %h2.main__content__subtitle
