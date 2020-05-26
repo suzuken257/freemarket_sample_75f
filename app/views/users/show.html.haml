@@ -2,7 +2,8 @@
 .mypage-main-content
   -# = render 'mypages/modules/mypage-sidebar'
   .a-right-content
-    .a-right-content__block#back-img.middle-center
+    .a-right-content__block#back-img.middle-center 
+      =link_to "クレジットカード登録、編集", "new_credit_card_path"
       -# = image_tag 'mypage/user-icon.png', size: '60x60', alt: 'user-icon', class:"user-icon"
       -# .a-right-content__block__user-name.bold #{current_user.nickname}
       .a-right-content__block__user-about
