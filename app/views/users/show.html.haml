@@ -4,13 +4,9 @@
   .a-right-content
     .a-right-content__block#back-img.middle-center 
       =link_to "クレジットカード登録、編集", new_credit_card_path
-      -# = image_tag 'mypage/user-icon.png', size: '60x60', alt: 'user-icon', class:"user-icon"
-      -# .a-right-content__block__user-name.bold #{current_user.nickname}
       .a-right-content__block__user-about
         %p.a-right-content__block__review 評価
-        -# %span.bold #{current_user.rates.count}
         %p.a-right-content__block__exhibit 出品数
-        -# %span.bold #{current_user.items.count}
     .a-right-content__block
       %ul.a-right-content__block__tabs.back-gray
         %li.active
@@ -27,7 +23,6 @@
               .a-right-content__block__object__link-box__body
                 .a-right-content__block__object__link-box__body--text 《秋服もう買った？》今なら出品すると5%お得チケットもらえる！去年の服を出品して新しい服を買おう♪
                 .a-right-content__block__object__link-box__body--time
-                  -# = fa_icon 'history', class: 'icon'
                   .a-right-content__block__object__link-box__body--time--date 1日前
               %i.fa.fa-angle-right.fa-2x
         %li
@@ -37,7 +32,6 @@
               .a-right-content__block__object__link-box__body
                 .a-right-content__block__object__link-box__body--text 【スマホを売ろう！】メルカリなら下取りよりも高く売れる♪いますぐ相場チェック！
                 .a-right-content__block__object__link-box__body--time
-                  -# = fa_icon 'history', class: 'icon'
                   .a-right-content__block__object__link-box__body--time--date 1日前
               %i.fa.fa-angle-right.fa-2x
         %li
@@ -47,7 +41,6 @@
               .a-right-content__block__object__link-box__body
                 .a-right-content__block__object__link-box__body--text 《8%ポイント還元チケットプレゼント》出品も秋フェス開催中の今がチャンス！
                 .a-right-content__block__object__link-box__body--time
-                  -# = fa_icon 'history', class: 'icon'
                   .a-right-content__block__object__link-box__body--time--date 3日前
               %i.fa.fa-angle-right.fa-2x
         %li
@@ -57,7 +50,6 @@
               .a-right-content__block__object__link-box__body
                 .a-right-content__block__object__link-box__body--text 《CM放送中》参加したら10円分ポイント必ずもらえる！秋フェス開催中♪
                 .a-right-content__block__object__link-box__body--time
-                  -# = fa_icon 'history', class: 'icon'
                   .a-right-content__block__object__link-box__body--time--date 5日前
               %i.fa.fa-angle-right.fa-2x
         %li
@@ -67,7 +59,6 @@
               .a-right-content__block__object__link-box__body
                 .a-right-content__block__object__link-box__body--text 《参加ボタンを押すだけ！》10円分のポイントが"必ず"もらえる！メルカリ秋フェスが開催中♪
                 .a-right-content__block__object__link-box__body--time
-                  -# = fa_icon 'history', class: 'icon'
                   .a-right-content__block__object__link-box__body--time--date 8日前
               %i.fa.fa-angle-right.fa-2x
         = link_to root_path do
