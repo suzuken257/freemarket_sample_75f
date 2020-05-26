@@ -70,5 +70,6 @@
         %li.listsRight__item.listsRight__item--new
           = link_to "新規登録", new_user_registration_path
           = link_to "商品送付先住所情報", new_deliver_address_path
-          =link_to "マイページ", user_path(@user.id)
-          = link_to "商品出品ページ" , new_item_path
+          -if user_signed_in?
+            = link_to "マイページ", "/users/#{current_user.id}"
+            = link_to "商品出品ページ" , new_item_path

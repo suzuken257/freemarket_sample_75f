@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_05_25_151006) do
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "integer"
+    t.integer "card_number"
     t.integer "expiration_year"
     t.integer "expiration_month"
     t.integer "security_code"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2020_05_25_151006) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
-ActiveRecord::Schema.define(version: 2020_05_25_090214) do
 
   create_table "deliver_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name"
@@ -76,7 +75,6 @@ ActiveRecord::Schema.define(version: 2020_05_25_090214) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 
   add_foreign_key "credit_cards", "users"
   add_foreign_key "items", "users"
