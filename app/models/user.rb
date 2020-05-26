@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :validatable, password_length: 7..128
   has_one :deliver_address, dependent: :destroy
   has_one :credit_card, dependent: :destroy
+  has_many :items, dependent: :destroy
 end
