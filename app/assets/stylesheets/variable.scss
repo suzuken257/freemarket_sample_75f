@@ -1,0 +1,169 @@
+.bold{
+  font-weight: 600;
+}
+
+
+// 背景色
+.back-gray{
+  background-color:#eee;
+}
+
+.back-silver {
+  background-color:#f5f5f5;
+}
+
+.back-red{
+  background-color: #ea352d;
+}
+
+
+// フォント色
+.font-gray{
+  color: #888;
+}
+
+.font-white{
+  color: #fff;
+}
+
+.font-red{
+  color: #ea352d;
+}
+
+
+.text-center{
+  text-align: center;
+}
+
+.marginT-8px{
+  margin-top: 8px;
+}
+
+
+@mixin input-box {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 10px 16px 8px 16px;
+}
+
+@mixin border-padding {
+  padding: 40px;
+  border-bottom: 1px solid #f3f1f2;
+}
+
+@mixin font-height {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.items-link_to{
+  color: #0099e8;
+}
+
+.user-rating{
+ .fas.fa-meh{
+  color: #FFCC00;
+ }
+}
+
+
+.fas.fa-frown{
+  color: #5d9dc9;
+ }
+
+
+
+ /*facebookアイコンの色*/
+.fa-facebook-square{
+  color: #385185;
+}
+
+
+
+ /*twitterアイコンの色*/
+.fa-twitter-square{
+  color: #5d9dc9;
+}
+
+
+ /*pinterestアイコンの色*/
+.fa-pinterest-square{
+ color: #aa262a;
+}
+
+.link-bar{
+  width: 100%;
+  background-color: gray;
+  height: 50px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.pay-way{
+  text-align: right;
+  padding: 50px 64px;
+}
+
+.fa-credit-card{
+  margin-right: 10px;
+}
+
+.buttun-disabled{
+  background-color: #888;
+}
+
+.active{
+  background-color: white;
+  border-top:2px solid;
+  border-top-color: red;
+}
+
+
+
+.sold-item{
+  width: 40px;
+  height: 40px;
+  border-top: 20px solid red;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid red;
+  position: absolute;
+  top: 16px;
+  &--text{
+    color: white;
+    font-size: 11px;
+    transform: rotate( -45deg );
+    position: absolute;
+    top:-15px;
+    left: -23px;
+  }
+}
+// ステータス
+.status-gray{
+  @include status(gray);
+}
+
+.status-blue{
+  @include status(blue);
+}
+
+.status-red{
+  @include status(red);
+}
+
+// 全ページ共通のフォント
+* {
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  color: #333;
+  box-sizing: border-box;
+}
+
+// 文字・背景色
+$global-background:#f5f5f5;
+$white:#fff;
+$gray:#eee;
+$hover-gray:#fafafa;
+$red:#ea352d;
+$link-blue: #0099e8;
+$font-black: #333333;

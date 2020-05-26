@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :items
   resources :deliver_addresses, only:[:new, :create]
+  resources :users, only: :show
+  resources :credit_cards, only: [:new, :create, :edit, :update]
 end
