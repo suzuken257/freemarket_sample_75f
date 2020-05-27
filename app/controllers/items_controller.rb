@@ -15,8 +15,9 @@ class ItemsController < ApplicationController
   end
 
   def purchase_confirmation
-    @item = Item.find(params[:id])
-    @items = @item.purchase_confirmation
+    # 商品出品機能が実装できたら下記のコメントアウトを外す
+    # @item = Item.find(params[:id])
+    # @items = @item.purchase_confirmation
   end
 
   private

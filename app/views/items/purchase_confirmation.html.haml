@@ -1,41 +1,55 @@
-.wrappre
-  = render "header"
-    .furima-container
-      %header.furima-header
-        .furima-logo-box
-          = link_to root_path do
-            .furima-logo
-      .buy-confirmation-box
-        .buy-confirmation-text-box 購入内容の確認
-        .buy-confirmation-purchase-box
-          .buy-content
-            .buy-item-box
-              %h3.buy-item-image
-                = image_tag "material/icon/member_photo_noimage_thumb.png", size: "100x100"
-              .buy-item-detail
-                %p.buy-item-name スマイルロゴ
-                %p.buy-price
-                  %span ¥1,299
-                  %span.item-shipping-fee （税込）送料込み
-        %section.buy-content
-          .buy-content
-            .buy-confirmation-detail-box
-              .buy-price-row
-                .buy-price-text 支払い金額
-                .buy-price-cell
-                  %span ¥1,299
-            .buy-confirmation-detail-box
-              .payment-method
-                %h3 支払い方法
-                %p.buy-user-credit-text クレジットカード
-                %a{:href => "#"}
-                  %span.credit-register-text クレジットカード情報を登録してください
-            .buy-confirmation-detail-box
-              .shipping-address
-                %h3 配送先
-                %a{:href => "#"}
-                  %span.buy-register-text 登録してください
-        .buy-content
-          .buy-confirmation-btn-box
-            %button.btn-default{:disabled => "disabled", :type => "submit"} 購入する
-  = render "footer"
+.furima-container
+  %header.furima-header
+    .furima-logo-box
+      = link_to root_path do
+        .furima-logo
+  .buy-confirmation-box
+    .buy-confirmation-text-box 購入内容の確認
+    .buy-confirmation-purchase-box
+      .buy-content
+        .buy-item-box
+          %h3.buy-item-image
+            = image_tag "material/icon/member_photo_noimage_thumb.png", size: "100x100"
+          .buy-item-detail
+            %p.buy-item-name スマイルロゴ
+            %p.buy-price
+              %span ¥1,299
+              %span.item-shipping-fee （税込）送料込み
+    %section.buy-content
+      .buy-content
+        .buy-confirmation-detail-box
+          .buy-price-row
+            .buy-price-text 支払い金額
+            .buy-price-cell
+              %span ¥1,299
+        .buy-confirmation-detail-box
+          .payment-method
+            %h3 支払い方法
+            %p.buy-user-credit-text クレジットカード
+            = link_to "#" do
+              %span.credit-register-text クレジットカード情報を登録してください
+        .buy-confirmation-detail-box
+          .shipping-address
+            %h3 配送先
+            = link_to "#" do
+              %span.buy-register-text 登録してください
+    .buy-content
+      .buy-confirmation-btn-box
+        %button.btn-default{:disabled => "disabled", :type => "submit"} 購入する
+  %footer.login-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to "#" do
+            プライバシーポリシー
+        %li
+          = link_to "#" do
+            フリマ利用規約
+        %li
+          = link_to "#" do
+            特定商取引に関する表記
+      = link_to "#", class:"footer-logo" do
+        = image_tag "material/logo/logo-white.png", size: "120x70"
+    .copyright
+      %p
+        %small © furima, Inc.
