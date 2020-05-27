@@ -21,6 +21,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def purchase_confirmation
+    # 商品出品機能が実装できたら下記のコメントアウトを外す
+    # @item = Item.find(params[:id])
+    # @items = @item.purchase_confirmation
+  end
+
   private
   def item_params
     params.require(item).permit(:name,:introduction,:shipping_area_from,:price).merge(user_id: current_user.id)
