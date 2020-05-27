@@ -99,7 +99,7 @@ Things you may want to cover:
 
 
 ### Association
-- has_to :items
+- has_many :items
 - has_ancestry
 
 ## commentsテーブル

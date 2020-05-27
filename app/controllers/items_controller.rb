@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   def index
     @items=Item.includes(:user)
+    @parents = Category.where(ancestry: nil)
   end
   private
   def move_to_index
