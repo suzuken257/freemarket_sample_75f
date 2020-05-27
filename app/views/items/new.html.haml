@@ -10,16 +10,18 @@
         .sell__main__content__file
           .sell__main__content__file__up
             %h3.sell__main__content__file__up__head
-            = f.fields_for :item_images do |i|
               出品画像
               %span.form-require
                 必須
               %p.sell__main__content__file__up__head__text
                 最大10枚までアップロードできます
-              .sell__main__content__file__up__box
-                = i.label :image, class: "sell-content-box", for: "upload-image" do
-                  
-                  = i.file_field :src , class: "js-file"
+              .sell__main__content__file__up__box#image-box
+                = f.fields_for :item_images do |i|
+                  .js-file_group{"data-index" => "#{i.index}"}
+                    -# = i.label :image, class: "sell-content-box", for: "upload-image" do
+                    = i.file_field :src , class: "js-file"
+                    %br/
+                    .js-remove 削除
         .sell__main__content__form
           %label
             商品
