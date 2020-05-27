@@ -16,11 +16,20 @@
               %p.sell__main__content__file__up__head__text
                 最大10枚までアップロードできます
               .sell__main__content__file__up__box#image-box
+                #previews
+                  - if @item.persisted?
+                    - @item.item_images.each_with_index do |image, i|
+                      = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
                 = f.fields_for :item_images do |i|
                   .js-file_group{"data-index" => "#{i.index}"}
-                    -# = i.label :image, class: "sell-content-box", for: "upload-image" do
                     = i.file_field :src , class: "js-file"
-                    %br/
+                    %br
+                    %span.js-remove 削除
+                  - if @item.persisted?
+                    = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+                - if @item.persisted?
+                  .js-file_group{"data-index" => "#{@item.item_images.count}"}
+                    = file_field_tag :src, name: "item[images_attributes][#{@item.item_images.count}][src]", class: 'js-file'
                     .js-remove 削除
         .sell__main__content__form
           %label
