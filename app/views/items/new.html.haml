@@ -1,7 +1,6 @@
-= render "form"
 .sell
   %header.sell__head
-    = link_to "" do
+    = link_to "/" do
       = image_tag "images/logo/logo.png", size: "200x62", class: "frima-logo"
   .sell__main
     = form_with model: @item, local: true do |f|
@@ -19,10 +18,8 @@
                 最大10枚までアップロードできます
               .sell__main__content__file__up__box
                 = i.label :image, class: "sell-content-box", for: "upload-image" do
-                  %input{type: "file", class: "sell__main__content__file__up__box__file", style: "display: none;"}
-                = i.file_field :item_image, src: "#", class: "js-file"
-                %pre.sell__main__content__file__up__box__inner       
-                = f.submit
+                  
+                  = i.file_field :src , class: "js-file"
         .sell__main__content__form
           %label
             商品
@@ -33,7 +30,7 @@
             商品の説明
             %span.form-require
               必須
-          = f.text_field :introduction, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+            = f.text_field :introduction, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             商品の詳細
