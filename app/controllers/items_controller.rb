@@ -9,10 +9,9 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.item_images.new
   end
-
   
   def create
-    @item=ItemImage.new(item_image_params)
+    @item=Item.new(item_params)
     if @item.save
       redirect_to items_path
     else
@@ -21,8 +20,8 @@ class ItemsController < ApplicationController
   end
 
   private
-  def item_image_params
-    params.require(:item).permit(:name,:introduction,:price, item_images_attributes: [:src]).merge(user_id: current_user.id)
+  def item_params
+    params.require(:item).permit(:name,:introduction,:price,:shipping_area_from, item_images_attributes: [:src]).merge(user_id: current_user.id)
   end
 
   def move_to_index
