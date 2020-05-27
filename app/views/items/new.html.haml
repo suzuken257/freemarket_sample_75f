@@ -4,20 +4,23 @@
     = link_to "" do
       = image_tag "images/logo/logo.png", size: "200x62", class: "frima-logo"
   .sell__main
-    = form_with model:@item, local: true do |f|
+    = form_with model: @item, local: true do |f|
       .sell__main__content
         %h2.sell__main__content__head
           商品の情報を入力
         .sell__main__content__file
           .sell__main__content__file__up
             %h3.sell__main__content__file__up__head
+            = f.fiels_for :item_images do |image|
               出品画像
               %span.form-require
                 必須
               %p.sell__main__content__file__up__head__text
                 最大10枚までアップロードできます
             .sell__main__content__file__up__box
+              = image.label :image, class: "sell-content-box", for: "upload-image" do
               %input{type: "file", class: "sell__main__content__file__up__box__file", style: "display: none;"}
+              = image.file_field :item_image, :src class: "js-file"
               %pre.sell__main__content__file__up__box__inner
                 ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
         .sell__main__content__form
