@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :items, only:[:index, :new, :show]
   resources :deliver_addresses, only:[:new, :create]
+  resources :users, only: :show
+  resources :credit_cards, only: [:new, :create, :edit, :update]
 end

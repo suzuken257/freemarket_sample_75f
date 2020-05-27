@@ -1,0 +1,146 @@
+= render "items/header"
+.mypage-main-content
+  = render 'users/module/mypage_sidebar'
+  .a-right-content
+    .a-right-content__block#back-img.middle-center 
+      =link_to "クレジットカード登録、編集", new_credit_card_path
+      .a-right-content__block__user-about
+        %p.a-right-content__block__review 評価
+        %p.a-right-content__block__exhibit 出品数
+    .a-right-content__block
+      %ul.a-right-content__block__tabs.back-gray
+        %li.active
+          %h4
+            = link_to "お知らせ", root_path,class:"middle-center bold mypage-center"
+        %li
+          %h4
+            = link_to "やることリスト", root_path,class:"middle-center bold mypage-center"
+      %ul.a-right-content__block__object
+        %li
+          = link_to root_path do
+            .a-right-content__block__object__link-box
+              =image_tag "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", alt: "block-img",class: "right-content__block__object__link-box__img",width:"47.99px",height:"47.99px"
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 《秋服もう買った？》今なら出品すると5%お得チケットもらえる！去年の服を出品して新しい服を買おう♪
+                .a-right-content__block__object__link-box__body--time
+                  .a-right-content__block__object__link-box__body--time--date 1日前
+              %i.fa.fa-angle-right.fa-2x
+        %li
+          = link_to root_path do
+            .a-right-content__block__object__link-box
+              =image_tag "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", alt: "block-img",class: "right-content__block__object__link-box__img",width:"47.99px",height:"47.99px"
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 【スマホを売ろう！】メルカリなら下取りよりも高く売れる♪いますぐ相場チェック！
+                .a-right-content__block__object__link-box__body--time
+                  .a-right-content__block__object__link-box__body--time--date 1日前
+              %i.fa.fa-angle-right.fa-2x
+        %li
+          = link_to root_path do
+            .a-right-content__block__object__link-box
+              =image_tag "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", alt: "block-img",class: "right-content__block__object__link-box__img",width:"47.99px",height:"47.99px"
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 《8%ポイント還元チケットプレゼント》出品も秋フェス開催中の今がチャンス！
+                .a-right-content__block__object__link-box__body--time
+                  .a-right-content__block__object__link-box__body--time--date 3日前
+              %i.fa.fa-angle-right.fa-2x
+        %li
+          = link_to root_path do
+            .a-right-content__block__object__link-box
+              =image_tag "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", alt: "block-img",class: "right-content__block__object__link-box__img",width:"47.99px",height:"47.99px"
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 《CM放送中》参加したら10円分ポイント必ずもらえる！秋フェス開催中♪
+                .a-right-content__block__object__link-box__body--time
+                  .a-right-content__block__object__link-box__body--time--date 5日前
+              %i.fa.fa-angle-right.fa-2x
+        %li
+          = link_to root_path do
+            .a-right-content__block__object__link-box
+              =image_tag "//static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", alt: "block-img",class: "right-content__block__object__link-box__img",width:"47.99px",height:"47.99px"
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 《参加ボタンを押すだけ！》10円分のポイントが"必ず"もらえる！メルカリ秋フェスが開催中♪
+                .a-right-content__block__object__link-box__body--time
+                  .a-right-content__block__object__link-box__body--time--date 8日前
+              %i.fa.fa-angle-right.fa-2x
+        = link_to root_path do
+          %li
+            .a-right-content__block__object__link-box
+              .a-right-content__block__object__link-box--string.back-gray.middle-center 一覧を見る
+    .a-right-content__block
+      %h4.a-right-content__block__title.middle.bold.back-silver 購入した商品
+      %ul.a-right-content__block__tabs.back-gray
+        %li.active
+          %h4.mypage-transactions
+            = link_to "取引中", root_path,class:"middle-center bold mypage-center"
+        %li
+          %h4
+            = link_to "過去の取引", root_path,class:"middle-center bold mypage-center"
+      %ul.a-right-content__block__object
+        = link_to root_path do
+          %li
+            .a-right-content__block__object__link-box
+              
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 【送料込】THREE シマリングリップジャム08
+                .a-right-content__block__object__link-box__body__detail.middle
+                  .a-right-content__block__object__link-box__body__detail--count-box
+                    %i.fa.fa-heart-o
+                    .like-count 7
+                  .a-right-content__block__object__link-box__body__detail--count-box
+                    %i.fa.fa-comment-o
+                    .comment-count 3
+                  .status-blue 出品中
+              %i.fa.fa-angle-right.fa-2x
+        = link_to root_path do
+          %li
+            .a-right-content__block__object__link-box
+              
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 【新品】THREE シマリンググローデュオ01
+                .a-right-content__block__object__link-box__body__detail.middle
+                  .a-right-content__block__object__link-box__body__detail--count-box
+                    %i.fa.fa-heart-o
+                    .like-count 12
+                  .a-right-content__block__object__link-box__body__detail--count-box
+                    %i.fa.fa-comment-o
+                    .comment-count 5
+                  .status-blue 出品中
+              %i.fa.fa-angle-right.fa-2x
+        = link_to root_path do
+          %li
+            .a-right-content__block__object__link-box
+              
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 「THREE シマリングリップジャム05」を購入しました。取引が完了しました。
+                .a-right-content__block__object__link-box__body__detail.middle
+                  .a-right-content__block__object__link-box__body__detail--count-box
+                    %i.fa.fa-heart-o
+                    .like-count 5
+                  .a-right-content__block__object__link-box__body__detail--count-box
+                    %i.fa.fa-comment-o
+                    .comment-count 7
+                  .status-gray 取引完了
+              %i.fa.fa-angle-right.fa-2x
+        = link_to root_path do
+          %li
+            .a-right-content__block__object__link-box
+              
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 【新品・未使用】THREE シマリングリップジャム08
+                .a-right-content__block__object__link-box__body__detail.middle
+                  .a-right-content__block__object__link-box__body__detail--count-box
+                    %i.fa.fa-heart-o
+                    .like-count 10
+                  .a-right-content__block__object__link-box__body__detail--count-box
+                    %i.fa.fa-comment-o
+                    .comment-count 8
+                  .status-red 公開停止中
+              %i.fa.fa-angle-right.fa-2x
+        = link_to root_path do
+          %li
+            .a-right-content__block__object__link-box
+              
+              .a-right-content__block__object__link-box__body
+                .a-right-content__block__object__link-box__body--text 【新品・送料込み】THREE シマリングリップジャム08
+                .a-right-content__block__object__link-box__body__detail.middle ¥1,500
+              %i.fa.fa-angle-right.fa-2x
+= render "items/footer"

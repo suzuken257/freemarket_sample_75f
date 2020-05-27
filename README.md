@@ -16,22 +16,25 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|username|string|null:false|
-|username_kana|string|null:false|
+|family_name|string|null:false|
+|first_name|string|null:false|
+|family_name_kana|string|null:false|
 |nickname|string|null:false|
 |introduction|text||
 |email|string|null:false, unique: true, index:true|
-|password|string|null:false|
+|encrypted_password|string|null:false|
 |birth_year|integer|null:false|
 |birth_month|integer|null:false|
 |birth_day|integer|null:false|
 
 
 ### Association
-- has_many :items dependent::destoroy
-- has_many :comments dependent::destoroy
-- belongs_to :deliver_adresses dependent::destoroy
-- belongs_to :credit_info dependent::destoroy
+- has_many :items,dependent::destroy
+- has_many :comments,dependent::destroy
+- has_to :deliver_addresses,dependent::destroy
+- hass_to :credit_card,dependent::destroy
+
+
 
 ## itemsテーブル
 
@@ -43,9 +46,9 @@ Things you may want to cover:
 |brand|string||
 |size|integer||
 |item_status|string|null:false|
-|Shipping_fee_burden|string|null:false|
-|Shipping_area_from|string|null:false|
-|Estimated_shipping_date|string|null:false|
+|shipping_fee_burden|string|null:false|
+|shipping_area_from|string|null:false|
+|estimated_shipping_date|string|null:false|
 |user_id|references|null: false, foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
 
@@ -56,37 +59,38 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :category
 
-## deliver_adressesテーブル
+## deliver_addressesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |zip_code|string|null:false|
-|prefecture|string|null:false|
 |city|string|null:false|
-|adress1|string|null:false|
-|apartment-adress|string||
+|address1|string|null:false|
+|apartment-address|string||
 |telephone|integer|unique: true|
-|user_id|references|null: false, foreign_key: true|
+|family_name|string|
+|first_name|string|
+|family_name_kana|string|
+|first_name_kana|string|
+|prefecture_id|integer|null:false|
+|user_id|integer|null: false, unique: true|
 
 
 ### Association
 - belongs_to :user
 
-## credit_infoテーブル
+## credit_cardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null:false, unique: true|
-|expiration_year|integer|null:false|
-|expiration_month|integer|null:false|
-|security_code|integer|null:false|
+|token|text||
 |user_id|references|null: false, foreign_key: true|
 
 
 ### Association
 - belongs_to :user
 
-## categoryテーブル
+## categoriesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -111,11 +115,11 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 
-## item_imageテーブル
+## item_imagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|image_url|text|null:false|
+|src|string|null:false|
 |item_id|references|null: false, foreign_key: true|
 
 
