@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2020_05_26_024138) do
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -61,10 +60,11 @@ ActiveRecord::Schema.define(version: 2020_05_26_024138) do
     t.text "introduction", null: false
     t.string "brand"
     t.integer "size"
-    t.string "item_status"
-    t.string "shipping_fee_burden"
+    t.string "item_status", null: false
+    t.string "shipping_fee_burden", null: false
     t.string "shipping_area_from", null: false
-    t.string "estimated_shipping_date"
+    t.string "estimated_shipping_date", null: false
+    t.integer "buyer_id"
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false

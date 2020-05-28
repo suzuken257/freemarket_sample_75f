@@ -53,6 +53,7 @@
                   必須
               .sell__main__content__form__box__group__select
                 %select.sell__main__content__form__box__group__select__form
+                  %option{value: 0} --
                   %option{value: 1} レディース
                   %option{value: 2} メンズ
                   %option{value: 3} ベビー・キッズ
@@ -71,13 +72,7 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                %select.sell__main__content__form__box__group__select__form
-                  %option{value: 1} 新品、未使用
-                  %option{value: 2} 未使用に近い
-                  %option{value: 3} 目立った傷や汚れなし
-                  %option{value: 4} やや傷や汚れあり
-                  %option{value: 5} 傷や汚れあり
-                  %option{value: 6} 全体的に状態が悪い
+                = f.collection_select :item_status, ItemStatus.all, :id, :value, {prompt: '--'}, class: "sell__main__content__form__box__group__select__form"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             配送について
@@ -90,24 +85,19 @@
                 %span.form-require
                   必須
             .sell__main__content__form__box__group__select
-              %select.sell__main__content__form__box__group__select__form
-                %option{value: 1} 送料込み(出品者負担)
-                %option{value: 2} 着払い(購入者負担)
+              = f.collection_select :shipping_fee_burden, ShippingFeeBurden.all, :id, :value, {prompt: '--'}, class: "sell__main__content__form__box__group__select__form"
             %label
               発送までの日数
               %span.form-require
                 必須
               .sell__main__content__form__box__group__select
-                %select.sell__main__content__form__box__group__select__form
-                  %option{value: 1} 1~2日で発送
-                  %option{value: 2} 2~3日で発送
-                  %option{value: 3} 4~7日で発送
+                = f.collection_select :estimated_shipping_date, EstimatedShippingDate.all, :id, :value, {prompt: '--'}, class: "sell__main__content__form__box__group__select__form"
               %label
                 発送元の地域
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.collection_select :shipping_area_from, Prefecture.all, :id, :name, {}, class: "sell__main__content__form__box__group__select__form"
+                = f.collection_select :shipping_area_from, Prefecture.all, :id, :name, {prompt: '--'}, class: "sell__main__content__form__box__group__select__form"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             販売価格(300〜9,999,999)
