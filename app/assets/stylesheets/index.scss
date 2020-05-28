@@ -80,13 +80,10 @@
 
       .listsRight {
         margin-left: auto;
-        display: flex;
-
         .listsRight__item {
           color: #333;
           line-height: 38px;
           padding: 0 0 0 16px;
-
           a {
             display: flex;
             align-items: center;
