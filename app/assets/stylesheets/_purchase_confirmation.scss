@@ -1,0 +1,165 @@
+.furima-container {
+  background-color: menu;
+  height: 100vh;
+  overflow: scroll;
+  .furima-header {
+    width: 100%;
+    height: 125px;
+    position: relative;
+    .furima-logo-box {
+    height: 62px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+      .furima-logo {
+        background-image: url(material/logo/logo.png);
+        background-repeat: no-repeat;
+        height: 62px;
+        background-size: 100%;
+        line-height: 150px;
+        text-align: center;
+      }
+    }
+  }
+  .buy-confirmation-box {
+    height: 770px;
+    width: 700px;
+    background-color: white;
+    margin: 0 auto;
+    .buy-confirmation-text-box {
+      padding: 5% 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-bottom: 1px solid #eeeeee;
+    }
+    .buy-confirmation-purchase-box {
+      padding: 4% 5%;
+      border-bottom: 1px solid #eeeeee;
+      display: flex;
+      .buy-content {
+        margin: 0 auto;
+        .buy-item-box {
+          display: flex;
+          .buy-item-image {
+          }
+          .buy-item-detail {
+            margin-left: 10px;
+            .buy-item-name {
+              padding: 5px 0;
+            }
+            .buy-price {
+              font-size: 13px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    .buy-content {
+      .buy-confirmation-detail-box {
+        padding: 5%;
+        border-bottom: 1px solid #eeeeee;
+        width: 50%;
+        margin: 0 auto;
+        .buy-price-row {
+          display: flex;
+          justify-content: space-around;
+          text-align:center;
+          margin: 0 auto;
+          .buy-price-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+          }
+          .buy-price-cell {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-left: 10px;
+          }
+        }
+      }
+      .buy-confirmation-detail-box {
+        padding: 5%;
+        border-bottom: 1px solid #eeeeee;
+        width: 50%;
+        margin: 0 auto;
+        .payment-method h3 {
+          font-weight: bold;
+        }
+        .payment-method {
+          .buy-user-credit-text {
+            font-size: 13px;
+          }
+          .credit-register-text {
+          }
+        }
+        .shipping-address h3 {
+          font-weight: bold;
+        }
+      }
+      .buy-confirmation-detail-box a {
+        text-decoration: none;
+        color: blue;
+      }
+      .buy-confirmation-detail-box a:hover {
+        color: blue;
+        border-bottom: solid 1px blue;
+      }
+    }
+    .buy-confirmation-btn-box {
+      padding: 5%;
+      margin: 0 auto;
+      .btn-default {
+        background: #ea352d;
+        color: #fff;
+        display: block;
+        width: 40%;
+        line-height: 48px;
+        font-size: 20px;
+        border: 1px solid transparent;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+  }
+  .login-footer {
+    width: 456px;
+    margin: 0 auto;
+    z-index: 1;
+    height: 150px;
+    padding: 40px 0;
+    text-align: center;
+    nav {
+      display: block;
+      ul {
+        font-size: 0;
+        margin-bottom: 20px;
+        li {
+          margin: 0;
+          font-size: 12px;
+          display: inline-block;
+          margin: 0 0 0 16px;
+          a {
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+    .footer-logo {
+      height: 62px;
+      width: 200px;
+      left: 50%;
+      -webkit-transform : translate(-50%,-50%);
+      transform : translate(-50%,-50%);
+      margin-top: 40px;
+    }
+    .copyright {
+    }
+  }
+}
