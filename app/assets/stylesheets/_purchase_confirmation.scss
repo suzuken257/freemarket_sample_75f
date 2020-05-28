@@ -94,10 +94,16 @@
             font-size: 13px;
           }
           .credit-register-text {
+            color: blue;
           }
         }
         .shipping-address h3 {
           font-weight: bold;
+        }
+        .shipping-address {
+          .buy-register-text{
+            color: blue;
+          }
         }
       }
       .buy-confirmation-detail-box a {
