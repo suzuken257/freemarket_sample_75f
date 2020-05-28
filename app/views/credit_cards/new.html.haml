@@ -5,7 +5,7 @@
     .card-input-contents
       %h2
         クレジットカード情報入力
-      = form_with id: "charge-form", url: "/card", method: :post, local: true do |f|
+      = form_with model: @card, url: '/card/pay/', method: 'POST', id: 'charge-form', class: 'signup-main__inner signup-main__inner--registration-form', novalidate: 'novalidate', html: { name: 'inputForm' } do |f|
         .card-input-content
           .form-group
             %label

@@ -1,23 +1,55 @@
 class CreditCardsController < ApplicationController
+
+  require "payjp"
+
   def new
-    @card=CreditCard.new
+    card = CreditCard.where(user_id: current_user.id)
+    redirect_to action: "show" if card.exists?
   end
-  def create
-    @card=CreditCard.new(credit_params)
-    if @card.save
-      redirect_to root_path
+
+  def pay #payjpとCardのデータベース作成を実施します。
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    if params['payjp-token'].blank?
+      redirect_to action: "new"
     else
-      render 'new'
+      customer = Payjp::Customer.create(
+      card: params['payjp-token'],
+      )
+      @card = CreditCard.new(user_id: current_user.id, card_number: customer.id, card_id: customer.default_card)
+      if @card.save
+        redirect_to action: "show"
+      else
+        redirect_to action: "pay"
+      end
     end
   end
-  def edit
-    
+  
+  def delete #PayjpとCardデータベースを削除します
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
   end
-  def update
-    
+
+  def show #Cardのデータpayjpに送り情報を取り出します
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "new" 
+    else
+      # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.credit_cards.retrieve(credit_card.card_number)
+    end
   end
+  
   private
   def credit_params
     params.require(:card).permit(:card_number,:expiration_year,:expiration_month,:security_code).marge(user_id: current_user.id )
   end
+
 end
