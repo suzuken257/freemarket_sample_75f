@@ -1,9 +1,9 @@
 .sell
   %header.sell__head
-    = link_to "" do
+    = link_to "/" do
       = image_tag "images/logo/logo.png", size: "200x62", class: "frima-logo"
   .sell__main
-    = form_with model:@item, local: true do |f|
+    = form_with model: @item, local: true do |f|
       .sell__main__content
         %h2.sell__main__content__head
           商品の情報を入力
@@ -15,10 +15,22 @@
                 必須
               %p.sell__main__content__file__up__head__text
                 最大10枚までアップロードできます
-            .sell__main__content__file__up__box
-              %input{type: "file", class: "sell__main__content__file__up__box__file", style: "display: none;"}
-              %pre.sell__main__content__file__up__box__inner
-                ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+              .sell__main__content__file__up__box#image-box
+                #previews
+                  - if @item.persisted?
+                    - @item.item_images.each_with_index do |image, i|
+                      = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+                = f.fields_for :item_images do |i|
+                  .js-file_group{"data-index" => "#{i.index}"}
+                    = i.file_field :src , class: "js-file"
+                    %br
+                    %span.js-remove 削除
+                  - if @item.persisted?
+                    = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+                - if @item.persisted?
+                  .js-file_group{"data-index" => "#{@item.item_images.count}"}
+                    = file_field_tag :src, name: "item[images_attributes][#{@item.item_images.count}][src]", class: 'js-file'
+                    .js-remove 削除
         .sell__main__content__form
           %label
             商品
@@ -29,7 +41,7 @@
             商品の説明
             %span.form-require
               必須
-          = f.text_field :introduction, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+            = f.text_field :introduction, class: "sell__main__content__form__input", placeholder: "商品の説明（必須 1,000文字以内（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             商品の詳細
@@ -41,6 +53,7 @@
                   必須
               .sell__main__content__form__box__group__select
                 %select.sell__main__content__form__box__group__select__form
+                  %option{value: 0} --
                   %option{value: 1} レディース
                   %option{value: 2} メンズ
                   %option{value: 3} ベビー・キッズ
@@ -59,13 +72,7 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                %select.sell__main__content__form__box__group__select__form
-                  %option{value: 1} 新品、未使用
-                  %option{value: 2} 未使用に近い
-                  %option{value: 3} 目立った傷や汚れなし
-                  %option{value: 4} やや傷や汚れあり
-                  %option{value: 5} 傷や汚れあり
-                  %option{value: 6} 全体的に状態が悪い
+                = f.collection_select :item_status, ItemStatus.all, :id, :value, {prompt: '--'}, class: "sell__main__content__form__box__group__select__form"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             配送について
@@ -78,24 +85,19 @@
                 %span.form-require
                   必須
             .sell__main__content__form__box__group__select
-              %select.sell__main__content__form__box__group__select__form
-                %option{value: 1} 送料込み(出品者負担)
-                %option{value: 2} 着払い(購入者負担)
+              = f.collection_select :shipping_fee_burden, ShippingFeeBurden.all, :id, :value, {prompt: '--'}, class: "sell__main__content__form__box__group__select__form"
             %label
               発送までの日数
               %span.form-require
                 必須
               .sell__main__content__form__box__group__select
-                %select.sell__main__content__form__box__group__select__form
-                  %option{value: 1} 1~2日で発送
-                  %option{value: 2} 2~3日で発送
-                  %option{value: 3} 4~7日で発送
+                = f.collection_select :estimated_shipping_date, EstimatedShippingDate.all, :id, :value, {prompt: '--'}, class: "sell__main__content__form__box__group__select__form"
               %label
                 発送元の地域
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.collection_select :shipping_area_from, Prefecture.all, :id, :name, {}, class: "sell__main__content__form__box__group__select__form"
+                = f.collection_select :shipping_area_from, Prefecture.all, :id, :name, {prompt: '--'}, class: "sell__main__content__form__box__group__select__form"
         .sell__main__content__form
           %h3.sell__main__content__form__sub
             販売価格(300〜9,999,999)
