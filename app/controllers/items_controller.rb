@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_product, except: [:index, :new, :create, :purchase_confirmation]
+  before_action :set_product, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :purchase_confirmation]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -10,6 +10,10 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
+    @category_parent_array = []
+      Category.where(ancestry: nil).each do |parent|
+         @category_parent_array << parent.name
+      end
   end
   
   def create
@@ -35,9 +39,36 @@ class ItemsController < ApplicationController
     # @items = @item.purchase_confirmation
   end
 
+  def search
+    respond_to do |format|
+      format.html
+      format.json do
+       @children = Category.find(params[:parent_id]).children
+       #親ボックスのidから子ボックスのidの配列を作成してインスタンス変数で定義
+      end
+    end
+  end
+
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find(params[:parent_id]).children
+    respond_to do |format|
+      format.json
+    end
+ end
+
+ # 子カテゴリーが選択された後に動くアクション
+ def get_category_grandchildren
+#選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find(params[:child_id]).children
+    respond_to do |format|
+      format.json
+    end
+ end
+
   private
   def item_params
-    params.require(:item).permit(:name,:introduction,:item_status, :price,:shipping_area_from, :shipping_fee_burden,:estimated_shipping_date, item_images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:introduction,:item_status, :price,:shipping_area_from, :shipping_fee_burden,:estimated_shipping_date,:category_parent_array, item_images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_product

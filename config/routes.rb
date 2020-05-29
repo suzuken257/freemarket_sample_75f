@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     # 商品出品機能が実装できたらcollectionをmemberに変更する
     collection do
       get :purchase_confirmation
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
 
