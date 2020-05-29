@@ -89,11 +89,11 @@
           = link_to "#" do
             %h3.title 新規投稿商品
         .category__box__lists
-          = @items.each do |item|
+          - @items.each do |item|
             .category__box__lists__list
               = link_to "#" do
                 %figure.category__box__lists__list__img
-                  = image_tag item.item_images.find(item_id: item.id).src_url
+                  = image_tag item.item_images.find_by(item_id: item.id).src_url
                 .category__box__lists__list__text
                   %h3.name
                     =item.name
