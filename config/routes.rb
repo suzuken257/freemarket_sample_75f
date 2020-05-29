@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :credit_cards, only: [:new, :show] do
     collection do
-      post 'show'
-      post 'pay'
-      post 'delete'
+      post 'show', to: 'credit_cards#show'
+      post 'pay', to: 'credit_cards#pay'
+      post 'delete', to: 'credit_cards#delete'
     end
   end
 end

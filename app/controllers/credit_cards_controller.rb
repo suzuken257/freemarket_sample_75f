@@ -4,7 +4,7 @@ class CreditCardsController < ApplicationController
 
   def new
     card = CreditCard.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    redirect_to action: "show" if current_user.credit_card.exists?
   end
 
   def pay #payjpとCardのデータベース作成を実施します。
@@ -28,7 +28,7 @@ class CreditCardsController < ApplicationController
     card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
     else
-      # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
@@ -36,20 +36,14 @@ class CreditCardsController < ApplicationController
       redirect_to action: "new"
   end
 
-  def show #Cardのデータpayjpに送り情報を取り出します
+  def show# def show #Cardのデータpayjpに送り情報を取り出します
     card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "new" 
     else
-      # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.credit_cards.retrieve(credit_card.card_number)
+      @default_card_information = customer.credit_cards.retrieve(credit_card.card_id)
     end
   end
-  
-  private
-  def credit_params
-    params.require(:card).permit(:card_number,:expiration_year,:expiration_month,:security_code).marge(user_id: current_user.id )
-  end
-
 end
