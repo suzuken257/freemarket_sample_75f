@@ -44,47 +44,75 @@ describe User do
     end
 
     # 7
+    it " birth_yearがない場合は登録できないこと" do
+      user = build(:user, birth_year: nil)
+      user.valid?
+      expect(user.errors[:birth_year]).to include("can't be blank")
+    end
+
+    # 8
+    it " birth_monthがない場合は登録できないこと" do
+      user = build(:user, birth_month: nil)
+      user.valid?
+      expect(user.errors[:birth_month]).to include("can't be blank")
+    end
+
+    # 9
+    it " birth_dayがない場合は登録できないこと" do
+      user = build(:user, birth_day: nil)
+      user.valid?
+      expect(user.errors[:birth_day]).to include("can't be blank")
+    end
+
+    # 10
     it "emailがない場合は登録できないこと" do
       user = build(:user, email: nil)
       user.valid?
       expect(user.errors[:email]).to include("can't be blank")
     end
 
-    # 8
+    # 11
     it "passwordがない場合は登録できないこと" do
       user = build(:user, password: nil)
       user.valid?
       expect(user.errors[:password]).to include("can't be blank")
     end
 
-    # 9
+    # 12
     it "passwordが存在してもpassword_confirmationがない場合は登録できないこと" do
       user = build(:user, password_confirmation: "")
       user.valid?
       expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
 
-    # 10
-    it "emailがフォーマット通りになっていない場合登録できないこと1" do
-      user = build(:user, email: '12345678')
-      user.valid?
-      expect(user.errors[:email]).to include("のフォーマットが不適切です")
-    end
-
-    # 11
-    it 'emailがフォーマット通りになっていない場合登録できないこと2' do
-      user = build(:user, email: '1234567@')
-      user.valid?
-      expect(user.errors[:email]).to include("のフォーマットが不適切です")
-    end
-
-    # 12
-    it "nicknameが6文字以下では登録できること " do
-      user = build(:user, nickname: "aaaaaa")
+    # 13
+    it " passwordが7文字以上であれば登録できること " do
+      user = build(:user, password: "0000000", password_confirmation: "0000000")
       expect(user).to be_valid
     end
 
-    # 13
+    # 14
+    it " passwordが6文字以下であれば登録できないこと " do
+      user = build(:user, password: "000000", password_confirmation: "000000")
+      user.valid?
+      expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
+    end
+
+    # 15
+    it "emailに＠がない場合保存できないこと" do
+      user = build(:user, email: '12345678')
+      user.valid?
+      expect(user.errors[:email]).to include("is invalid")
+    end
+
+    # 16
+    it 'emailの＠以降のドメイン記述がない場合保存できないこと' do
+      user = build(:user, email: '1234567@')
+      user.valid?
+      expect(user.errors[:email]).to include("is invalid")
+    end
+
+    # 17
     it " 重複したemailが存在する場合は登録できないこと " do
       user = create(:user)
       another_user = build(:user, email: user.email)
@@ -92,32 +120,39 @@ describe User do
       expect(another_user.errors[:email]).to include("has already been taken")
     end
 
-    # 14
-    it " passwordが7文字以上であれば登録できること " do
-      user = build(:user, password: "0000000", password_confirmation: "0000000")
-      user.valid?
+    # 18
+    it "nicknameが6文字以下では登録できること " do
+      user = build(:user, nickname: "aaaaaa")
       expect(user).to be_valid
     end
 
-    # 15
-    it " passwordが6文字以下であれば登録できないこと " do
-      user = build(:user, password: "000000", password_confirmation: "000000")
+    #19
+    it "family_nameが半角である場合登録できないこと " do
+      user = build(:user, family_name: "a")
       user.valid?
-      expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
+      expect(user.errors[:family_name]).to include("is invalid")
     end
 
-    # # it "family_name_kanaが半角である場合登録できないこと " do
-    # #   user = build(:user, family_name_kana: "a")
-    # #   user.valid?
-    # #   expect(user).to be_valid
-    # # end
+    #20
+    it "first_nameが半角である場合登録できないこと " do
+      user = build(:user, first_name: "b")
+      user.valid?
+      expect(user.errors[:first_name]).to include("is invalid")
+    end
 
-    # # it "first_name_kanaが半角である場合登録できないこと " do
-    # #   user = build(:user, first_name_kana: "a")
-    # #   user.valid?
-    # #   expect(user).to be_valid
-    # # end
+    #21
+    it "family_name_kanaが半角である場合登録できないこと " do
+      user = build(:user, family_name_kana: "c")
+      user.valid?
+      expect(user.errors[:family_name_kana]).to include("is invalid")
+    end
 
+    #22
+    it "first_name_kanaが半角である場合登録できないこと " do
+      user = build(:user, first_name_kana: "d")
+      user.valid?
+      expect(user.errors[:first_name_kana]).to include("is invalid")
+    end
 
   end
 end
