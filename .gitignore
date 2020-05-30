@@ -30,3 +30,5 @@
 public/uploads/*
 
 /vendor/bundle
+
+/.env

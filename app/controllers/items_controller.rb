@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_product, except: [:index, :new, :create, :purchase_confirmation]
+  before_action :set_item, except: [:index, :new, :create, :purchase_confirmation, :buy]
+
+  require 'payjp'
 
   def index
     @items=Item.includes(:user, :item_image).order('created_at DESC')
@@ -34,12 +36,23 @@ class ItemsController < ApplicationController
     # @items = @item.purchase_confirmation
   end
 
+  def buy
+    # すでに購入されていないか？
+    # @item = Item.find(params[:item_id])
+  #   Payjp.api_key = 'sk_test_08a16d761d7bd8f1a73085ed'
+  #   Payjp::Charge.create(
+  #   :amount => params[:amount],
+  #   :card => params['payjp-token'],
+  #   :currency => 'jpy'
+  # )
+  end
+
   private
   def item_params
     params.require(:item).permit(:name,:introduction,:item_status, :price,:shipping_area_from, :shipping_fee_burden,:estimated_shipping_date, item_images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
-  def set_product
+  def set_item
     @item = Item.find(params[:id])
   end
 
