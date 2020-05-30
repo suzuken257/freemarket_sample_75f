@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :purchase_confirmation, :buy]
+  before_action :set_item, except: [:new, :create]
 
   require 'payjp'
 
@@ -31,20 +31,36 @@ class ItemsController < ApplicationController
   end
 
   def purchase_confirmation
-    # 商品出品機能が実装できたら下記のコメントアウトを外す
-    # @item = Item.find(params[:id])
     # @items = @item.purchase_confirmation
   end
 
   def buy
+    @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
     # すでに購入されていないか？
-    # @item = Item.find(params[:item_id])
-  #   Payjp.api_key = 'sk_test_08a16d761d7bd8f1a73085ed'
-  #   Payjp::Charge.create(
-  #   :amount => params[:amount],
-  #   :card => params['payjp-token'],
-  #   :currency => 'jpy'
-  # )
+    if @item.buyer_id.present? 
+      redirect_back(fallback_location: root_path) 
+    elsif @card.blank?
+      # カード情報がなければ、買えないから戻す
+      redirect_to action: "purchase_confirmation"
+      flash[:alert] = '購入にはクレジットカード登録が必要です'
+    else
+      # 購入者もいないし、クレジットカードもあるし、決済処理に移行
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      # 請求を発行
+      Payjp::Charge.create(
+      amount: @item.price,
+      customer: @card.payjp_id,
+      currency: 'jpy',
+      )
+      # 売り切れなので、productの情報をアップデートして売り切れにします。
+      if @item.update(buyer_id: current_user.id)
+        flash[:notice] = '購入しました。'
+        redirect_to controller: 'items', action: 'index', id: @item.id
+      else
+        flash[:alert] = '購入に失敗しました。'
+        redirect_to controller: 'items', action: 'index', id: @item.id
+      end
+    end
   end
 
   private

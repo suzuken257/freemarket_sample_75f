@@ -9,11 +9,14 @@
       .buy-content
         .buy-item-box
           %h3.buy-item-image
-            = image_tag "material/icon/member_photo_noimage_thumb.png", size: "100x100"
+            = image_tag "#{@item.item_images[0].src}", size: "100x100"
           .buy-item-detail
-            %p.buy-item-name スマイルロゴ
+            %p.buy-item-name 
+              = @item.name
             %p.buy-price
-              %span ¥1,299
+              %span 
+                = @item.price.to_s(:delimited)
+                円
               %span.item-shipping-fee （税込）送料込み
     %section.buy-content
       .buy-content
@@ -21,7 +24,8 @@
           .buy-price-row
             .buy-price-text 支払い金額
             .buy-price-cell
-              %span ¥1,299
+              %span 
+                = "¥#{@item.price.to_s(:delimited)}"
         .buy-confirmation-detail-box
           .payment-method
             %h3 支払い方法
@@ -35,7 +39,8 @@
               %span.buy-register-text 登録してください
     .buy-content
       .buy-confirmation-btn-box
-        %button.btn-default{:disabled => "disabled", :type => "submit"} 購入する
+        = form_tag(action: :buy, method: :post) do
+          %button.btn-default 購入する
     = form_tag action: :buy, method: :post do
       :plain
       %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "pk_test_0816834c33257af8a4bf22cc"}

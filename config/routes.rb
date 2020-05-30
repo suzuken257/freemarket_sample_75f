@@ -3,13 +3,12 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :items, only:[:index, :new, :show, :create ] do
     # 商品出品機能が実装できたらcollectionをmemberに変更する
-    collection do
+    member do
       get :purchase_confirmation
       post :buy
     end
   end
 
-  resources :items, only:[:index, :new, :show]
   resources :deliver_addresses, only:[:new, :create]
   resources :users, only: :show
   resources :credit_cards, only: [:new, :show, :delete] do
