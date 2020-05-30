@@ -30,20 +30,36 @@
           .payment-method
             %h3 支払い方法
             %p.buy-user-credit-text クレジットカード
-            = link_to "#" do
-              %span.credit-register-text クレジットカード情報を登録してください
+            - if @card.blank?
+              = link_to new_credit_card_path do
+                %span.credit-register-text クレジットカード情報を登録してください
+            - else
+              = image_tag "images/#{@card_image}",width:'34',height:'20', alt:'master-card'
+              %p.creditcard-info__number
+                = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
+              %p.creditcard-info__period 
+                = @exp_month + " / " + @exp_year
         .buy-confirmation-detail-box
           .shipping-address
             %h3 配送先
-            = link_to "#" do
-              %span.buy-register-text 登録してください
+            - if @address.blank?
+              = link_to new_deliver_address_path do
+                %span.buy-register-text 登録してください
+            - else
+              = "〒 #{@address.zip_code}"
+              -# %br
+              -#   = @address.prefecture.name + @address.city + @address.address1 + @address.apartment_address
+              -# %br
+              -#   = @address_info
+              %br
+                = @full_name
     .buy-content
       .buy-confirmation-btn-box
         = form_tag(action: :buy, method: :post) do
           %button.btn-default 購入する
-    = form_tag action: :buy, method: :post do
-      :plain
-      %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "pk_test_0816834c33257af8a4bf22cc"}
+    -# = form_tag action: :buy, method: :post do
+    -#   :plain
+    -#   %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "pk_test_0816834c33257af8a4bf22cc"}
   %footer.login-footer
     %nav
       %ul.clearfix

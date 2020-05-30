@@ -87,14 +87,3 @@ class CreditCardsController < ApplicationController
   end
   
 end
-
-# def show# def show #Cardのデータpayjpに送り情報を取り出します
-#   card = CreditCard.find_by(user_id: current_user.id)
-#   if card.blank?
-#     redirect_to action: "new" 
-#   else
-#     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-#     customer = Payjp::Customer.retrieve(card.payjp_id)
-#     @default_card_information = customer.credit_card.retrieve(credit_card.card_id)
-#   end
-# end
