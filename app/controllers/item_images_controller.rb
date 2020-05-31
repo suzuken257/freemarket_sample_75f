@@ -1,2 +1,0 @@
-class ItemImagesController < ApplicationControlle
-end
