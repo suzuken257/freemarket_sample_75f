@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'items#index'
-  resources :items, only:[:index, :new, :show, :create ] do
-    # 商品出品機能が実装できたらcollectionをmemberに変更する
+  resources :items do
     member do
       get :purchase_confirmation
       post :buy

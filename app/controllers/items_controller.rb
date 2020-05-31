@@ -1,12 +1,18 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, only: [:show,:edit, :update, :destroy, :purchase_confirmation]
 
   require 'payjp'
-
+  
   def index
     @items=Item.all.order('created_at DESC')
   end
+
+  def show
+    @images=@item.item_images
+    @image = @images.first
+  end
+
   
   def new
     @item = Item.new
@@ -22,11 +28,22 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to item_path(@item)
+    else
+      render :destroy
     end
   end
 

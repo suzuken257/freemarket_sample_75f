@@ -28,7 +28,7 @@
 
 # Ignore uploaded file
 /public/uploads/*
-
 /vendor/bundle
 
 /.env
+
