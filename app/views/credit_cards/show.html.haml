@@ -10,14 +10,14 @@
           .new-card クレジットカード（最新）
           - if @card.present?
             .container
-              .creditcard-info
+              .container__creditcard-info
                 = image_tag "images/#{@card_image}",width:'34',height:'20', alt:'master-card'
-                %p.creditcard-info__number
+                %p.container__creditcard-info__number
                   = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
-                %p.creditcard-info__period 
+                %p.container__creditcard-info__period 
                   = @exp_month + " / " + @exp_year
-              .card-delete-box
-                = button_to "削除する", delete_credit_cards_path(current_user), method: :delete, class:"creditcard-info__delete"
+              .container__card-delete-box
+                = button_to "削除する", delete_credit_cards_path(current_user), method: :delete, class:"container__card-delete-box__delete"
             = link_to "マイページに戻る", user_path(current_user.id)
           - else
             .new-card

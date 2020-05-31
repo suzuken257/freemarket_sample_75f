@@ -21,16 +21,16 @@
 .container {
   display: flex;
   justify-content: space-between;
-  .creditcard-info {
+  &__creditcard-info {
     padding: 1em;
-    .creditcard-info__number{
+    &__number{
       padding-bottom: 5px;
     }
   }
-  .card-delete-box {
+  &__card-delete-box {
     line-height: 100px;
     margin-right: 50px;
-    .creditcard-info__delete {
+    &__delete {
       background: red;
       color: white;
       padding: 3px;
