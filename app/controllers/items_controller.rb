@@ -94,7 +94,7 @@ class ItemsController < ApplicationController
       redirect_back(fallback_location: root_path) 
       flash[:alert] = '購入済みの商品です'
     elsif @card.blank? or @address.blank?
-      # カード情報がなければ、買えないから戻す
+      # カード、住所先情報がなければ、買えないから戻す
       redirect_to action: "purchase_confirmation"
       flash[:alert] = '購入にはクレジットカードと住所登録が必要です'
     else
