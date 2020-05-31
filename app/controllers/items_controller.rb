@@ -88,15 +88,15 @@ class ItemsController < ApplicationController
 
   def buy
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
-    @address = DeliverAddress.where(user_id: current_user.id)
+    @address = DeliverAddress.find_by(user_id: current_user.id) if DeliverAddress.where(user_id: current_user.id).present?
     # すでに購入されていないか？
     if @item.buyer_id.present? 
       redirect_back(fallback_location: root_path) 
       flash[:alert] = '購入済みの商品です'
-    elsif @card.blank? && @address.blank?
+    elsif @card.blank? or @address.blank?
       # カード情報がなければ、買えないから戻す
       redirect_to action: "purchase_confirmation"
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
+      flash[:alert] = '購入にはクレジットカードと住所登録が必要です'
     else
       # 購入者もいないし、クレジットカードもあるし、決済処理に移行
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
