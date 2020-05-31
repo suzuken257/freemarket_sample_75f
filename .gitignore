@@ -27,6 +27,6 @@
 /config/master.key
 
 # Ignore uploaded file
-/public/uploads/*
-
+public/uploads/*
 /vendor/bundle
+/public/uploads
