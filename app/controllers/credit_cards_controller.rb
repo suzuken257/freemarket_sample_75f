@@ -42,6 +42,7 @@ class CreditCardsController < ApplicationController
       customer = Payjp::Customer.retrieve(card.payjp_id)
       customer.delete
       card.delete
+      flash[:notice] = 'クレジットカード情報を削除しました。'
     end
       redirect_to action: "new"
   end
