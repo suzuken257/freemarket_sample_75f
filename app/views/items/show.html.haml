@@ -71,6 +71,9 @@
           =link_to "編集", edit_item_path(@item)
         .destroy_btn
           =link_to "削除", "/items/#{@item.id}", method: :delete
+      -else
+        .buy_btn
+          =link_to '購入', purchase_confirmation_item_path(@item)
   .comment_contents
     .comment_lists
     %form#comment_form.comment_form{"accept-charset" => "UTF-8", :action => "#", :method => "post"}

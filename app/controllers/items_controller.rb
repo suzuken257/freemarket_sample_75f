@@ -88,11 +88,12 @@ class ItemsController < ApplicationController
 
   def buy
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+    @address = DeliverAddress.where(user_id: current_user.id)
     # すでに購入されていないか？
     if @item.buyer_id.present? 
       redirect_back(fallback_location: root_path) 
       flash[:alert] = '購入済みの商品です'
-    elsif @card.blank?
+    elsif @card.blank? && @address.blank?
       # カード情報がなければ、買えないから戻す
       redirect_to action: "purchase_confirmation"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
