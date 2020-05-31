@@ -49,10 +49,11 @@
                 %span.buy-register-text 登録してください
             - else
               = "〒 #{@address.zip_code}"
-              -# %br
-              -#   = @address.prefecture.name + @address.city + @address.address1 + @address.apartment_address
-              -# %br
-              -#   = @address_info
+              %br
+                = Prefecture.find(@address.prefecture_id).name + @address.city + @address.address1
+                - if @address.apartment_address != nil
+                  %br
+                  = @address.apartment_address
               %br
                 = @full_name
     .buy-content

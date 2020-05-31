@@ -31,10 +31,9 @@ class ItemsController < ApplicationController
   end
 
   def purchase_confirmation
-    # @items = @item.purchase_confirmation
     @card = CreditCard.find_by(user_id: current_user.id)
     @address = DeliverAddress.find_by(user_id: current_user.id)
-    # @address_info = Prefecture.find(current_user.prefecture_id).name + @address.city + @address.address1 + @address.apartment_address
+    # @address_info = Prefecture.find(current_user.prefecture_id).name
     @full_name = current_user.family_name + current_user.first_name
     if @card.present?
       # 登録している場合,PAY.JPからカード情報を取得する

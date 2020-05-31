@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_024138) do
     t.string "family_name_kana"
     t.string "first_name_kana"
     t.string "zip_code", null: false
-    t.integer "prefecture_id", null: false
+    t.string "prefecture_id", null: false
     t.string "city", null: false
     t.string "address1", null: false
     t.string "apartment_address"
