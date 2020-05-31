@@ -79,4 +79,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'payjp'
+gem 'dotenv-rails'
 gem "bulma-rails"

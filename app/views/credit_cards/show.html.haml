@@ -1,0 +1,27 @@
+=render "items/header"
+.main
+  .mypage-main-content
+    = render 'users/module/mypage_sidebar'
+    .mypage-main.col-9
+      .header_title
+        クレジットカード(登録済み)
+      .single-container
+        .creditcard_section
+          .new-card クレジットカード（最新）
+          - if @card.present?
+            .container
+              .container__creditcard-info
+                = image_tag "images/#{@card_image}",width:'34',height:'20', alt:'master-card'
+                %p.container__creditcard-info__number
+                  = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
+                %p.container__creditcard-info__period 
+                  = @exp_month + " / " + @exp_year
+              .container__card-delete-box
+                = button_to "削除する", delete_credit_cards_path(current_user), method: :delete, class:"container__card-delete-box__delete"
+            = link_to "マイページに戻る", user_path(current_user.id)
+          - else
+            .new-card
+              = link_to new_credit_card_path, class:"new-card-btn" do
+                %i.far.fa-credit-card 
+                クレジットカードを追加する
+= render 'items/footer'
