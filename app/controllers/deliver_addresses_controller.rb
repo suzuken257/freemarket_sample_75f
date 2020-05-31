@@ -5,6 +5,7 @@ class DeliverAddressesController < ApplicationController
   def create
     @deliver_address=DeliverAddress.new(deliver_address_params)
     @deliver_address.save
+    flash[:notice] = '配送先情報を登録しました。'
     redirect_to "/"
   end
 
