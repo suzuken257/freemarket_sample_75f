@@ -19,7 +19,8 @@
         text-align: center;
         img{
           height: 346px;
-          width: 560px;
+          width: 346px;
+          border-radius: 5px;
         }
       }
       .images{
@@ -45,7 +46,7 @@
     .item_detail{
       margin-top: 15px;
       table{
-        width: 600px;
+        width: 520px;
         height: 375px;
         tbody{
           tr{
@@ -107,7 +108,7 @@
     }
     form#comment_form{
       textarea#comment_body{
-        width: 580px;
+        width: 520px;
         min-height: 104px;
         padding: 10px;
       }
