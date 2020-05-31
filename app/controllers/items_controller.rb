@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.destroy
-      redirect_to items_path
+      redirect_to root_path
     else
       render :destroy
     end
