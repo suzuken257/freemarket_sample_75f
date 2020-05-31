@@ -80,6 +80,18 @@
             margin-left: 10px;
           }
         }
+        .payment-method {
+          position: relative;
+          .buydetails-content__fix {
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+          .buydetails-content__fix span {
+            color: blue;
+            font-size: 13px;
+          }
+        }
       }
       .buy-confirmation-detail-box {
         padding: 5%;

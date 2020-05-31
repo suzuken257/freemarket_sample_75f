@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   require 'payjp'
 
   def index
-    @item = Item.find_by(params[:id])
     @items=Item.includes(:user, :item_image).order('created_at DESC')
   end
   

@@ -39,6 +39,8 @@
                 = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
               %p.creditcard-info__period 
                 = @exp_month + " / " + @exp_year
+              = link_to credit_card_path(current_user.id), class: 'buydetails-content__fix' do
+                %span 登録ページ
         .buy-confirmation-detail-box
           .shipping-address
             %h3 配送先
