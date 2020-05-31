@@ -93,7 +93,10 @@
             .category__box__lists__list
               = link_to item_path(item) do
                 %figure.category__box__lists__list__img
-                  = image_tag item.item_images.find_by(item_id: item.id).src_url
+                  - if item.item_images.present?
+                    = image_tag item.item_images.find_by(item_id: item.id).src_url
+                  - else 
+                    = image_tag "material/no-image.png"
                 .category__box__lists__list__box
                   .category__box__lists__list__box__text
                     %h3.name
