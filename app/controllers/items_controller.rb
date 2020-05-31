@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item=@item.update(item_params)
+    if @item.update(item_params)
 
       redirect_to root_path
     else
