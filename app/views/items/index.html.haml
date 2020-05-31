@@ -89,45 +89,24 @@
           = link_to "#" do
             %h3.title 新規投稿商品
         .category__box__lists
-          .category__box__lists__list
-            = link_to "#" do
-              %figure.category__box__lists__list__img
-                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-              .category__box__lists__list__text
-                %h3.name product3
-                .pricebox
-                  %ul
-                    %li 30000円
-                    %li
-                      %i.fa.fa-star.likeIcon
-                      0
-                  %p (税込)
-          .category__box__lists__list
-            = link_to "#" do
-              %figure.category__box__lists__list__img
-                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"
-              .category__box__lists__list__text
-                %h3.name product2
-                .pricebox
-                  %ul
-                    %li 20000円
-                    %li
-                      %i.fa.fa-star.likeIcon
-                      0
-                  %p (税込)
-          .category__box__lists__list
-            = link_to "#" do
-              %figure.category__box__lists__list__img
-                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
-              .category__box__lists__list__text
-                %h3.name product1
-                .pricebox
-                  %ul
-                    %li 10000円
-                    %li
-                      %i.fa.fa-star.likeIcon
-                      0
-                  %p (税込)
+          - @items.each do |item|
+            .category__box__lists__list
+              = link_to "#" do
+                %figure.category__box__lists__list__img
+                  = image_tag item.item_images.find_by(item_id: item.id).src_url
+                .category__box__lists__list__box
+                  .category__box__lists__list__box__text
+                    %h3.name
+                      =item.name
+                    .pricebox
+                      %ul
+                        %li 
+                          ="#{item.price}円"
+                      %p (税込)
+                  - if item.buyer_id == nil
+                    .exhibiting 出品中
+                  - else
+                    .sold-out 購入済み
     %section.category
       %h2.head ピックアップブランド
       .category__box
@@ -139,41 +118,44 @@
             = link_to "#" do
               %figure.category__box__lists__list__img
                 = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-              .category__box__lists__list__text
-                %h3.name product3
-                .pricebox
-                  %ul
-                    %li 30000円
-                    %li
-                      %i.fa.fa-star.likeIcon
-                      0
-                  %p (税込)
+              .category__box__lists__list__box
+                .category__box__lists__list__box__text
+                  %h3.name product3
+                  .pricebox
+                    %ul
+                      %li 30000円
+                      %li
+                        %i.fa.fa-star.likeIcon
+                        0
+                    %p (税込)
           .category__box__lists__list
             = link_to "#" do
               %figure.category__box__lists__list__img
                 = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"
-              .category__box__lists__list__text
-                %h3.name product2
-                .pricebox
-                  %ul
-                    %li 20000円
-                    %li
-                      %i.fa.fa-star.likeIcon
-                      0
-                  %p (税込)
+              .category__box__lists__list__box
+                .category__box__lists__list__box__text
+                  %h3.name product2
+                  .pricebox
+                    %ul
+                      %li 20000円
+                      %li
+                        %i.fa.fa-star.likeIcon
+                        0
+                    %p (税込)
           .category__box__lists__list
             = link_to "#" do
               %figure.category__box__lists__list__img
                 = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
-              .category__box__lists__list__text
-                %h3.name product1
-                .pricebox
-                  %ul
-                    %li 10000円
-                    %li
-                      %i.fa.fa-star.likeIcon
-                      0
-                  %p (税込)
+                .category__box__lists__list__box
+                  .category__box__lists__list__box__text
+                    %h3.name product1
+                    .pricebox
+                      %ul
+                        %li 10000円
+                        %li
+                          %i.fa.fa-star.likeIcon
+                          0
+                      %p (税込)
   %aside.appbanner
     .inner
       %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
