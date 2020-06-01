@@ -37,13 +37,11 @@
             %th カテゴリー
             %td
               %a
-              = link_to "ベビー・キッズ","#"
-              %br/
-              %a
-              = link_to "ベビー服(男女兼用)  ~95cm","#"
-              %br/
-              %a
-              = link_to "アウター","#"
+                = link_to "#{@product.category.parent.parent.name}"
+                %br
+                = link_to parent.name
+                %br
+                = link_to parent.parent.name 
           %tr
             %th ブランド
             %td

@@ -52,7 +52,7 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form", name: 'item[category_ids][]'
+                = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form"
               .sell__main__content__form__box__group__child
               .sell__main__content__form__box__group__grandchild
               %label
