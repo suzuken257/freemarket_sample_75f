@@ -13,9 +13,9 @@ class User < ApplicationRecord
   validates :first_name, {presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }}
   validates :family_name_kana, {presence: true, format: { with: /\A[ぁ-ん]+\z/ }}
   validates :first_name_kana, {presence: true, format: { with: /\A[ぁ-ん]+\z/ }}
-  validates :birth_year, presence: true
-  validates :birth_month, presence: true
-  validates :birth_day, presence: true
+  # validates :birth_year, presence: true
+  # validates :birth_month, presence: true
+  # validates :birth_day, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }}
 
