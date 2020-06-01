@@ -14,14 +14,14 @@ class ItemsController < ApplicationController
     @images=@item.item_images
     @image = @images.first
     @items = Item.find(params[:id])
-    @parents = Category.all.order("id ASC").limit(1000)
+    @parents = Category.all.order("id ASC").limit(1315)
   end
 
   
   def new
     @item = Item.new
     @item.item_images.new
-    @category_parent_array = []
+    @category_parent_array = ["---"]
       Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent.name
       end

@@ -24,6 +24,7 @@ $(function(){
     })
     .done(function(data) {
       var html = buildHTML(data);
+      console.log(html)
       $('.sell__main__content__form__box__group__child').append(html);
     })
   });
@@ -33,7 +34,7 @@ $(function(){
        options += `<option value=${category.id}}>${category.name}</option>`
     });
     var html =
-    `<select>
+    `<select name="item[category_id]">
     <option value="---">---${options}</option>
     </select>`
     return html;
