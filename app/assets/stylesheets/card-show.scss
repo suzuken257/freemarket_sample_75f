@@ -1,0 +1,39 @@
+.mypage-main.col-9 {
+  margin: 0 auto;
+  max-width: 480px;
+  background: white;
+  .header_title {
+    font-size: 25px;
+    color: #FF367F;
+    border-bottom: 1px solid #eeeeee;
+    padding:1rem;
+  }
+  .single-container{
+    padding: 1rem;
+    .creditcard_section {
+      .new-card{
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  &__creditcard-info {
+    padding: 1em;
+    &__number{
+      padding-bottom: 5px;
+    }
+  }
+  &__card-delete-box {
+    line-height: 100px;
+    margin-right: 50px;
+    &__delete {
+      background: red;
+      color: white;
+      padding: 3px;
+    }
+  }
+}

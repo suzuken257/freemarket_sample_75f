@@ -81,3 +81,6 @@ gem 'font-awesome-sass'
 gem 'ancestry'
 gem 'jquery-rails', '4.3.1'
 gem 'pry-rails'
+gem 'payjp'
+gem 'dotenv-rails'
+gem "bulma-rails"
