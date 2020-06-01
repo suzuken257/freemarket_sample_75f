@@ -53,8 +53,8 @@
                   必須
               .sell__main__content__form__box__group__select
                 = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form", name: 'item[category_ids][]'
-              .sell__main__content__form__box__group__select__child
-              .sell__main__content__form__box__group__select__grandchild
+              .sell__main__content__form__box__group__child
+              .sell__main__content__form__box__group__grandchild
               %label
                 商品の状態
                 %span.form-require

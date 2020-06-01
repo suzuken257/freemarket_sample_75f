@@ -14,8 +14,6 @@ class ItemsController < ApplicationController
   def show
     @images=@item.item_images
     @image = @images.first
-    @product = Product.find(params[:id])
-    @parents = Category.all.order("id ASC").limit(1000)
   end
 
   

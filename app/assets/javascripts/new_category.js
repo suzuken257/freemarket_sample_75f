@@ -1,11 +1,13 @@
 $(function(){
+
   function buildHTML(categories){
-    $.each(categories, function() {
-      options += `<option value=${---}>${---}</option>`
+    let options = ``
+    $.each(categories, function(i, category) {
+       options += `<option value=${category.id}>${category.name}</option>`
     });
     var html =
-    `<select>
-    ${options}
+    `<select id="child-form">
+    <option value="---">---${options}</option>
     </select>`
     return html;
   }
@@ -22,8 +24,33 @@ $(function(){
     })
     .done(function(data) {
       var html = buildHTML(data);
-      $('.sell__main__content__form__box__group__select__child').append(html);
+      $('.sell__main__content__form__box__group__child').append(html);
     })
   });
-  
+  function grandHTML(categories){
+    let options = ``
+    $.each(categories, function(i, category) {
+       options += `<option value=${category.id}}>${category.name}</option>`
+    });
+    var html =
+    `<select>
+    <option value="---">---${options}</option>
+    </select>`
+    return html;
+  }
+  $(document).on("change","#child-form",function(){
+    var parentValue = document.getElementById("child-form").value;
+    $.ajax({
+      url: '/items/get_category_grandchildren',
+      type: "GET",
+      data: {
+        child_id: parentValue 
+      },
+      dataType: 'json'
+    })
+    .done(function(data) {
+      var html = grandHTML(data);
+      $('.sell__main__content__form__box__group__grandchild').append(html);
+    })
+  });
 });
