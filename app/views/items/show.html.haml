@@ -12,6 +12,8 @@
             - if image.present?
               .image1
                 = image_tag image.src_url
+            - else 
+                = image_tag "material/no-image.png"
     .item_price
       = "¥ #{@item.price}"
     .price_info
