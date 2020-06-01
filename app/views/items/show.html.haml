@@ -6,14 +6,17 @@
       =@item.name
     .item_image
       .selected_image
-        = image_tag @image.src.to_s, size: "300x300"
+        - if @image.present?
+          = image_tag @image.src.to_s, size: "300x300"
+        - else 
+          = image_tag "material/no-image.png"
         .images
           - @item.item_images.each.with_index do |image, index|
             - if image.present?
               .image1
                 = image_tag image.src_url
             - else 
-                = image_tag "material/no-image.png"
+              = image_tag "material/no-image.png"
     .item_price
       = "¥ #{@item.price}"
     .price_info
