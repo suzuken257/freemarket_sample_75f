@@ -9,7 +9,10 @@
       .buy-content
         .buy-item-box
           %h3.buy-item-image
-            = image_tag "#{@item.item_images[0].src}", size: "100x100"
+            -if @item.item_images[0].present?
+              = image_tag "#{@item.item_images[0].src}", size: "100x100"
+            -else
+              = image_tag "material/no-image.png"
           .buy-item-detail
             %p.buy-item-name 
               = @item.name
