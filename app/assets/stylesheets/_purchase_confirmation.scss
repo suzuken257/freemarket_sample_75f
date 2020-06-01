@@ -25,7 +25,7 @@
     }
   }
   .buy-confirmation-box {
-    height: 770px;
+    height: 860px;
     width: 700px;
     background-color: white;
     margin: 0 auto;
@@ -80,6 +80,18 @@
             margin-left: 10px;
           }
         }
+        .payment-method {
+          position: relative;
+          .buydetails-content__fix {
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+          .buydetails-content__fix span {
+            color: blue;
+            font-size: 13px;
+          }
+        }
       }
       .buy-confirmation-detail-box {
         padding: 5%;
@@ -94,10 +106,16 @@
             font-size: 13px;
           }
           .credit-register-text {
+            color: blue;
           }
         }
         .shipping-address h3 {
           font-weight: bold;
+        }
+        .shipping-address {
+          .buy-register-text{
+            color: blue;
+          }
         }
       }
       .buy-confirmation-detail-box a {

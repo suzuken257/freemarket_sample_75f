@@ -3,32 +3,31 @@
 .main
   .item_info
     .item_name
-      product3
+      =@item.name
     .item_image
       .selected_image
-        = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-      .images
-        .image1
-          = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-        .image2
-          = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png"
-        .image3
-          = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png"
+        = image_tag @image.src.to_s, size: "300x300"
+        .images
+          - @item.item_images.each.with_index do |image, index|
+            - if image.present?
+              .image1
+                = image_tag image.src_url
     .item_price
-      ¥30,000
+      = "¥ #{@item.price}"
     .price_info
       .existence_tax
         (税込)
       .existence_shipping_cost
         送料込み
     .item_introduction
-      親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+      = @item.introduction
     .item_detail
       %table
         %tbody
           %tr
             %th 出品者
-            %td hoge
+            %td 
+              =@item.user.nickname
           %tr
             %th カテゴリー
             %td
@@ -48,23 +47,33 @@
             %td
           %tr
             %th 商品の状態
-            %td 未使用に近い
+            %td 
+              =ItemStatus.find(@item.item_status).value
           %tr
             %th 配送料の負担
-            %td 送料込み（出品者負担）
+            %td
+              = ShippingFeeBurden.find(@item.shipping_fee_burden).value
           %tr
             %th 発送元の地域
             %td
-              %a
-              = link_to "岩手県","#"
+              =Prefecture.find(@item.shipping_area_from).name
           %tr
             %th 発送日の目安
-            %td 4-7日で発送
+            %td
+              = EstimatedShippingDate.find(@item.estimated_shipping_date).value
     .other_info
       .favorite_total
         お気に入り 0
       .report_btn
         不適切な商品の通報
+      -if user_signed_in? && current_user.id == @item.user_id
+        .edit_btn
+          =link_to "編集", edit_item_path(@item)
+        .destroy_btn
+          =link_to "削除", "/items/#{@item.id}", method: :delete
+      -else
+        .buy_btn
+          =link_to '購入', purchase_confirmation_item_path(@item)
   .comment_contents
     .comment_lists
     %form#comment_form.comment_form{"accept-charset" => "UTF-8", :action => "#", :method => "post"}
