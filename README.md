@@ -29,10 +29,10 @@ Things you may want to cover:
 
 
 ### Association
-- has_many :items,dependent::destroy
-- has_many :comments,dependent::destroy
-- has_to :deliver_addresses,dependent::destroy
-- hass_to :credit_card,dependent::destroy
+- has_many :items,dependent: :destroy
+- has_many :credit_card, dependent: :destroy
+- has_many :comments,dependent: :destroy
+- has_one :deliver_address, dependent: :destroy
 
 
 
@@ -77,13 +77,14 @@ Things you may want to cover:
 
 
 ### Association
+- belongs_to_active_hash :prefecture
 - belongs_to :user
 
 ## credit_cardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|token|text||
+|payjp_id|string|null: false|
 |user_id|references|null: false, foreign_key: true|
 
 
@@ -124,6 +125,7 @@ Things you may want to cover:
 
 
 ### Association
+- mount_uploader :src, ImageUploader
 - belongs_to :item
 
 * Database initialization

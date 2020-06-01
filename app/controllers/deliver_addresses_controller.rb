@@ -4,8 +4,13 @@ class DeliverAddressesController < ApplicationController
   end
   def create
     @deliver_address=DeliverAddress.new(deliver_address_params)
-    @deliver_address.save
-    redirect_to "/"
+    if @deliver_address.save
+      flash[:notice] = '配送先情報を登録しました。'
+      redirect_to "/"
+    else
+      flash[:alert] = '登録に失敗しました。'
+      redirect_to new_deliver_address_path
+    end
   end
 
   private 

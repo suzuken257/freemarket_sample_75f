@@ -9,7 +9,10 @@
       .buy-content
         .buy-item-box
           %h3.buy-item-image
-            = image_tag "#{@item.item_images[0].src}", size: "100x100"
+            -if @item.item_images[0].present?
+              = image_tag "#{@item.item_images[0].src}", size: "100x100"
+            -else
+              = image_tag "material/no-image.png", size: "100x100"
           .buy-item-detail
             %p.buy-item-name 
               = @item.name
@@ -60,9 +63,6 @@
       .buy-confirmation-btn-box
         = form_tag(action: :buy, method: :post) do
           %button.btn-default 購入する
-    -# = form_tag action: :buy, method: :post do
-    -#   :plain
-    -#   %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "pk_test_0816834c33257af8a4bf22cc"}
   %footer.login-footer
     %nav
       %ul.clearfix
