@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show,:edit, :update, :destroy, :purchase_confirmation, :buy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :purchase_confirmation, :buy]
 
   require 'payjp'
   
@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     @images=@item.item_images
     @image = @images.first
   end
-
+  
   
   def new
     @item = Item.new
