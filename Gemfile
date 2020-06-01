@@ -86,4 +86,4 @@ gem 'jquery-rails'
 gem 'payjp'
 gem 'dotenv-rails'
 gem "bulma-rails"
-gem 'fog'
+gem 'fog-aws'
