@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
   def update
     if @item.update(item_params)
       flash[:notice] = '商品情報を編集しました。'
-      redirect_to root_path
+      redirect_to item_path(@item)
     else
       render :edit
     end
