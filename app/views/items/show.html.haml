@@ -37,16 +37,13 @@
             %th カテゴリー
             %td
               %a
-              - @parents.each do |parent|
-                - if @items.category_id == parent.id
-                  = link_to "#" do
-                    = parent.parent.parent.name #親カテゴリー
-                    %br
-                  = link_to "#" do
-                    = parent.parent.name #子カテゴリー
-                    %br
-                  = link_to "#" do
-                    = parent.name #孫カテゴリー
+              = link_to "ベビー・キッズ","#"
+              %br/
+              %a
+              = link_to "ベビー服(男女兼用)  ~95cm","#"
+              %br/
+              %a
+              = link_to "アウター","#"
           %tr
             %th ブランド
             %td

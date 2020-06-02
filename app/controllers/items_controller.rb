@@ -5,31 +5,24 @@ class ItemsController < ApplicationController
   require 'payjp'
   
   def index
-    @parents = Category.where(ancestry: nil)
-    @items=Item.includes(:user, :item_image).order('created_at DESC')
     @items=Item.all.order('created_at DESC')
   end
 
   def show
     @images=@item.item_images
     @image = @images.first
-    @items = Item.find(params[:id])
-    @parents = Category.all.order("id ASC").limit(1315)
   end
   
   
   def new
     @item = Item.new
     @item.item_images.new
-    @category_parent_array = ["---"]
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
-      end
   end
   
   def create
     @item=Item.new(item_params)
     if @item.save
+      flash[:notice] = '商品を出品しました。'
       redirect_to root_path
     else
       render :new
@@ -41,8 +34,8 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-
-      redirect_to root_path
+      flash[:notice] = '商品情報を編集しました。'
+      redirect_to item_path(@item)
     else
       render :edit
     end
@@ -50,6 +43,7 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.destroy
+      flash[:notice] = '出品した商品を取り下げました。'
       redirect_to root_path
     else
       render :destroy
@@ -96,14 +90,15 @@ class ItemsController < ApplicationController
 
   def buy
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+    @address = DeliverAddress.find_by(user_id: current_user.id) if DeliverAddress.where(user_id: current_user.id).present?
     # すでに購入されていないか？
     if @item.buyer_id.present? 
       redirect_back(fallback_location: root_path) 
       flash[:alert] = '購入済みの商品です'
-    elsif @card.blank?
-      # カード情報がなければ、買えないから戻す
+    elsif @card.blank? or @address.blank?
+      # カード、住所先情報がなければ、買えないから戻す
       redirect_to action: "purchase_confirmation"
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
+      flash[:alert] = '購入にはクレジットカードと住所登録が必要です'
     else
       # 購入者もいないし、クレジットカードもあるし、決済処理に移行
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
@@ -124,36 +119,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def search
-    respond_to do |format|
-      format.html
-      format.json do
-       @children = Category.find(params[:parent_id]).children
-       #親ボックスのidから子ボックスのidの配列を作成してインスタンス変数で定義
-      end
-    end
-  end
-
-  def get_category_children
-    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find(params[:parent_id]).children
-    respond_to do |format|
-      format.json
-    end
- end
-
- # 子カテゴリーが選択された後に動くアクション
- def get_category_grandchildren
-#選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-    @category_grandchildren = Category.find(params[:child_id]).children
-    respond_to do |format|
-      format.json
-    end
- end
-
   private
   def item_params
-    params.require(:item).permit(:name,:introduction,:item_status, :price,:shipping_area_from, :shipping_fee_burden,:estimated_shipping_date,:category_id,:ancestry, item_images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:introduction,:item_status, :price,:shipping_area_from, :shipping_fee_burden,:estimated_shipping_date, item_images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_item
