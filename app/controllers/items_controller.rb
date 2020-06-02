@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show,:edit, :update, :destroy, :purchase_confirmation, :buy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :purchase_confirmation, :buy]
 
   require 'payjp'
   
@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
     @items = Item.find(params[:id])
     @parents = Category.all.order("id ASC").limit(1315)
   end
-
+  
   
   def new
     @item = Item.new
