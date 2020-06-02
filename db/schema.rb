@@ -10,18 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_024138) do
+ActiveRecord::Schema.define(version: 2020_05_26_100646) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "name", null: false
+    t.string "name", null: false
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "payjp_id", null: false
+    t.integer "card_number"
+    t.integer "expiration_year"
+    t.integer "expiration_month"
+    t.integer "security_code"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
@@ -33,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_024138) do
     t.string "family_name_kana"
     t.string "first_name_kana"
     t.string "zip_code", null: false
-    t.string "prefecture_id", null: false
+    t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.string "address1", null: false
     t.string "apartment_address"
@@ -44,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_024138) do
   end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "src", null: false
+    t.string "src"
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
