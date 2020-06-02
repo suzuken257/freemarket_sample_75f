@@ -40,13 +40,13 @@
               - @parents.each do |parent|
                 - if @items.category_id == parent.id
                   = link_to "#" do
-                    = parent.parent.parent.name #親カテゴリー
+                    -# = parent.parent.parent.name #親カテゴリー
                     %br
                   = link_to "#" do
-                    = parent.parent.name #子カテゴリー
+                    -# = parent.parent.name #子カテゴリー
                     %br
                   = link_to "#" do
-                    = parent.name #孫カテゴリー
+                    -# = parent.name #孫カテゴリー
           %tr
             %th ブランド
             %td
