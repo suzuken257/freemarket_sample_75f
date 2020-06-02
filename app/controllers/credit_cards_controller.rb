@@ -10,7 +10,7 @@ class CreditCardsController < ApplicationController
 
   def pay
     # PAY.JPの秘密鍵をセット（環境変数）
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
 
     # jsで作成したpayjpTokenがちゃんと入っているか？
     if params['payjpToken'].blank?
@@ -38,7 +38,7 @@ class CreditCardsController < ApplicationController
   def delete #PayjpとCardデータベースを削除します
     card = CreditCard.find_by(user_id: current_user.id)
     if card.present?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
       customer = Payjp::Customer.retrieve(card.payjp_id)
       customer.delete
       card.delete
@@ -51,7 +51,7 @@ class CreditCardsController < ApplicationController
     if @card.present?
       # 登録している場合,PAY.JPからカード情報を取得する
       # PAY.JPの秘密鍵をセットする。
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
       # PAY.JPから顧客情報を取得する。
       customer = Payjp::Customer.retrieve(@card.payjp_id)
       # PAY.JPの顧客情報から、デフォルトで使うクレジットカードを取得する。

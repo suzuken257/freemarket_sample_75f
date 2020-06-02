@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
     if @card.present?
       # 登録している場合,PAY.JPからカード情報を取得する
       # PAY.JPの秘密鍵をセットする。
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
       # PAY.JPから顧客情報を取得する。
       customer = Payjp::Customer.retrieve(@card.payjp_id)
       # PAY.JPの顧客情報から、デフォルトで使うクレジットカードを取得する。
@@ -101,7 +101,7 @@ class ItemsController < ApplicationController
       flash[:alert] = '購入にはクレジットカードと住所登録が必要です'
     else
       # 購入者もいないし、クレジットカードもあるし、決済処理に移行
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
       # 請求を発行
       Payjp::Charge.create(
       amount: @item.price,
