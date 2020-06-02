@@ -24,7 +24,6 @@ $(function(){
     })
     .done(function(data) {
       var html = buildHTML(data);
-      console.log(html)
       $('.sell__main__content__form__box__group__child').append(html);
     })
   });
