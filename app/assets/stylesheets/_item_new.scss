@@ -137,47 +137,7 @@ label {
           &__group {
             &__select {
               margin: 8px 0 0;
-              .select-default{
-                width: 400px;
-                height: 48px;
-                padding: 0 16px;
-                border-radius: 4px;
-                border: 1px solid #ccc;
-                background: 0;
-                font-size: 16px;
-                line-height: 1.5;
-                cursor: pointer;
-                margin: 0 0 40px;
-              }
               &__form {
-                width: 400px;
-                height: 48px;
-                padding: 0 16px;
-                border-radius: 4px;
-                border: 1px solid #ccc;
-                background: 0;
-                font-size: 16px;
-                line-height: 1.5;
-                cursor: pointer;
-                margin: 0 0 40px;
-              }
-            }
-            &__child{
-              select{
-                width: 400px;
-                height: 48px;
-                padding: 0 16px;
-                border-radius: 4px;
-                border: 1px solid #ccc;
-                background: 0;
-                font-size: 16px;
-                line-height: 1.5;
-                cursor: pointer;
-                margin: 0 0 40px;
-              }
-            }
-            &__grandchild{
-              select{
                 width: 400px;
                 height: 48px;
                 padding: 0 16px;
