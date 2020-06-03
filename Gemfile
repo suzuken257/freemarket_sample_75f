@@ -89,3 +89,4 @@ gem 'payjp'
 gem 'dotenv-rails'
 gem "bulma-rails"
 gem 'fog-aws'
+gem 'antivirus'
