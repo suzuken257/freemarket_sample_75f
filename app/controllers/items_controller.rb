@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
 
   require 'payjp'
   
@@ -38,6 +38,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @items = Item.find(params[:id])
+    @parents = Category.all.order("id ASC").limit(1315)
   end
 
   def update
@@ -133,7 +135,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-       @children = Category.find(params[:parent_id]).children
+      @children = Category.find(params[:parent_id]).children
        #親ボックスのidから子ボックスのidの配列を作成してインスタンス変数で定義
       end
     end

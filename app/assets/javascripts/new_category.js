@@ -1,5 +1,4 @@
-$(function(){
-
+$(document).on('turbolinks:load',function(){
   function buildHTML(categories){
     let options = ``
     $.each(categories, function(i, category) {

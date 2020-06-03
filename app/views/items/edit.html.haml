@@ -1,7 +1,7 @@
 .sell
   %header.sell__head
     = link_to "/" do
-      = image_tag "images/logo/logo.png", size: "200x62", class: "frima-logo"
+      = image_tag "material/logo/logo.png", size: "200x62", class: "frima-logo"
   .sell__main
     = form_with model: @item, local: true do |f|
       .sell__main__content
@@ -52,21 +52,9 @@
                 %span.form-require
                   必須
               .sell__main__content__form__box__group__select
-                %select.sell__main__content__form__box__group__select__form
-                  %option{value: 0} --
-                  %option{value: 1} レディース
-                  %option{value: 2} メンズ
-                  %option{value: 3} ベビー・キッズ
-                  %option{value: 4} インテリア・住まい・小物
-                  %option{value: 5} 本・音楽・ゲーム
-                  %option{value: 6} おもちゃ・ホビー・グッズ
-                  %option{value: 7} コスメ・香水・美容
-                  %option{value: 8} 家電・スマホ・カメラ
-                  %option{value: 9} スポーツ・レジャー
-                  %option{value: 10} ハンドメイド
-                  %option{value: 11} チケット
-                  %option{value: 12} 自動車・オートバイ
-                  %option{value: 13} レディース
+                = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form"
+              .sell__main__content__form__box__group__child
+              .sell__main__content__form__box__group__grandchild
               %label
                 商品の状態
                 %span.form-require
