@@ -23,7 +23,6 @@ $(document).on('turbolinks:load',function(){
       dataType: 'json'
     })
     .done(function(data) {
-      console.log(data)
       var html = buildHTML(data);
       $('#child-form').remove(); //親が変更された時、子以下を削除するする
       $('#grandchild').remove();
