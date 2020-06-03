@@ -55,6 +55,54 @@ describe Item do
       item.valid?
       expect(item.errors[:shipping_area_from]).to include("を入力してください")
     end
-
+    # 10
+    it "estimated_shipping_dateが空では登録不可" do
+      item = build(:item, estimated_shipping_date: "")
+      item.valid?
+      expect(item.errors[:estimated_shipping_date]).to include("を入力してください")
+    end
+    # 11
+    it "nameの文字数が41文字以上だと登録不可" do
+      item = build(:item, name: "a" * 41)
+      item.valid?
+      expect(item.errors[:name]).to include("は40文字以内で入力してください")
+    end
+    # 12
+    it "nameの文字数が40字以内だと登録可能" do
+      item = build(:item, name: "a" * 39)
+      expect(item).to be_valid
+    end
+    # 13
+    it "introductionの文字が1001文字以上だと登録不可" do
+      item = build(:item, introduction: "a" * 1001)
+      item.valid?
+      expect(item.errors[:introduction]).to include("は1000文字以内で入力してください")
+    end
+    # 14
+    it "introductionの文字数が1000字以内だと登録可能" do
+      item = build(:item, introduction: "a" * 1000)
+      expect(item).to be_valid
+    end
+    # 15
+    it "introductionの文字数が1000字以内だと登録可能" do
+      item = build(:item, introduction: "a" * 1000)
+      expect(item).to be_valid
+    end
+    # 16
+    it "brandがなくても保存できる" do
+      item = build(:item, brand: "")
+      expect(item).to be_valid
+    end
+    # 17
+    it "sizeがなくても保存できる" do
+      item = build(:item, size: "")
+      expect(item).to be_valid
+    end
+    # 18
+    it " categoryが空では登録不可" do
+      item = build(:item, category_id: "")
+      item.valid?
+      expect(item.errors[:category_id]).to include("を入力してください")
+    end
   end
 end
