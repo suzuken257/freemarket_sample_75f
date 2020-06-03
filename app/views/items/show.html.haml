@@ -37,7 +37,7 @@
             %th カテゴリー
             %td
               %a
-              - @parents.each do |parent|
+              - @categories.each do |parent|
                 - if @items.category_id == parent.id
                   = link_to "#" do
                     = parent.parent.parent.name #親カテゴリー

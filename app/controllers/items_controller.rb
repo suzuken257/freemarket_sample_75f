@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
     @images=@item.item_images
     @image = @images.first
     @items = Item.find(params[:id])
-    @parents = Category.all.order("id ASC").limit(1315)
+    @parents = Category.where( ancestry: nil)
+    @categories = Category.all.order("id ASC").limit(1315)
   end
   
   
