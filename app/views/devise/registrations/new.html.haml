@@ -45,9 +45,13 @@
             =f.label:'生年月日'
             %span.form-require 必須
             %br
-            != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'select-box', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+            = f.collection_select :birth_year, BirthYyyy.all, :id, :year, {prompt: '--'}, class: "birth-year"
+            = f.collection_select :birth_month, BirthMm.all, :id, :month, {prompt: '--'}, class: "birth-month"
+            = f.collection_select :birth_day, BirthDd.all, :id, :day, {prompt: '--'}, class: "birth-day"
             %br/
-            %br/
+            -# = sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'select-box', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+            -# %br/
+            -# %br/
           = f.submit "次へ", class: "login-submit"
   %footer.login-footer
     %nav
