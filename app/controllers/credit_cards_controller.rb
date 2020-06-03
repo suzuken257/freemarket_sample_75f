@@ -6,6 +6,7 @@ class CreditCardsController < ApplicationController
   def new
     card = CreditCard.where(user_id: current_user.id)
     redirect_to credit_card_path(current_user.id) if current_user.credit_card.exists?
+    @parents = Category.where(ancestry: nil)
   end
 
   def pay
@@ -30,6 +31,7 @@ class CreditCardsController < ApplicationController
       if @card.save
         redirect_to credit_card_path(current_user.id), notice:"支払い情報の登録が完了しました"
       else
+        flash[:alert] = '登録の際にエラーが発生しました。正しく記入してください。'
         render 'new'
       end
     end
@@ -48,6 +50,7 @@ class CreditCardsController < ApplicationController
   end
 
   def show
+    @parents = Category.where(ancestry: nil)
     if @card.present?
       # 登録している場合,PAY.JPからカード情報を取得する
       # PAY.JPの秘密鍵をセットする。
