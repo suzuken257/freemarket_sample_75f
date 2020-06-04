@@ -1,9 +1,7 @@
 FactoryBot.define do
   factory :credit_card do
-    password = Faker::Internet.password(min_length: 8)
-    name {Faker::Name.last_name}
-    email {Faker::Internet.free_email}
-    password {password}
-    password_confirmation {password}
+    user_id { 1 }
+    payjp_id { "MyString" }
+    user
   end
 end

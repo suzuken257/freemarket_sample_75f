@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :item_image do
-    content {Faker::Lorem.sentence}
-    image {File.open("#{Rails.root}/public/images/test_image.jpg")}
+    src {File.open("#{Rails.root}/public/uploads/item_image/src/1/cute_cat_illust_3737")}
     user
   end
 end
