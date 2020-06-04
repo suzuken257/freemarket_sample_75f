@@ -83,43 +83,18 @@
             margin-right: 25px;
             text-decoration: none;
           }
-        }
-      }
-      .listsRight {
-        li {
-          a {
-            text-decoration: none;
-            margin-left: 25px;
-          }
-        }
-      }
-      &:hover{
-        div{
-          position: relative;
-          top: -15px;
-          .category__parent{
-            position: absolute;
-            top: 25px;
-            display: block;
-            z-index: 1;
-            width: 240px;
-
-            &--name{
-              width: 100%;
-              color: black;
-              display: inline-block;
-              padding: 10px 20px;
-              font-size: 13px;
-              letter-spacing: 2px;
-            }
-            li {
-              &:hover{
-                .category__child{
-                  width: 100%;
-                  display: block;
-                  top: 0;
-                  left: 221px;
-                .category__child__name {
+          &:hover{
+            div{
+              position: relative;
+              top: -15px;
+              .category__parent{
+                position: absolute;
+                top: 25px;
+                display: block;
+                z-index: 1;
+                width: 240px;
+    
+                &--name{
                   width: 100%;
                   color: black;
                   display: inline-block;
@@ -127,27 +102,52 @@
                   font-size: 13px;
                   letter-spacing: 2px;
                 }
-                  li {
-                    &:hover{
-                      .category__child__name {
-                        width: 100%;
-                        color: black;
-                        display: inline-block;
-                        padding: 10px 20px;
-                        font-size: 13px;
-                        letter-spacing: 2px;
-                      }
-                      .category__grandchild{
-                        width: 300px;
-                        display: block;
-                        top: 0;
-                        left: 220px;
+                li {
+                  &:hover{
+                    .category__child{
+                      width: 100%;
+                      display: block;
+                      top: 0;
+                      left: 221px;
+                    .category__child__name {
+                      width: 100%;
+                      color: black;
+                      display: inline-block;
+                      padding: 10px 20px;
+                      font-size: 13px;
+                      letter-spacing: 2px;
+                    }
+                      li {
+                        &:hover{
+                          .category__child__name {
+                            width: 100%;
+                            color: black;
+                            display: inline-block;
+                            padding: 10px 20px;
+                            font-size: 13px;
+                            letter-spacing: 2px;
+                          }
+                          .category__grandchild{
+                            width: 300px;
+                            display: block;
+                            top: 0;
+                            left: 220px;
+                          }
+                        }
                       }
                     }
                   }
                 }
               }
             }
+          }
+        }
+      }
+      .listsRight {
+        li {
+          a {
+            text-decoration: none;
+            margin-left: 25px;
           }
         }
       }
