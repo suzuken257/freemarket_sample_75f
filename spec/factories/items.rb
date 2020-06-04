@@ -2,7 +2,7 @@ FactoryBot.define do
 
   factory :item do
     name                    {"tomato"}
-    price                   {111}
+    price                   {1000}
     introduction            {"aaa"}
     brand                   {"aaa"}
     size                    {"aaa"}
@@ -10,10 +10,9 @@ FactoryBot.define do
     shipping_fee_burden     {"aaa"}
     shipping_area_from      {"aaa"}
     estimated_shipping_date {"aaa"}
-    category_id             {1}
     user_id                 {1}
     user
-    category
+    category { create(:category) }
   end
 
 end

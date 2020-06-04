@@ -84,9 +84,10 @@ describe Item do
       expect(item).to be_valid
     end
     # 15
-    it "introductionの文字数が1000字以内だと登録可能" do
-      item = build(:item, introduction: "a" * 1000)
-      expect(item).to be_valid
+    it " categoryが空では登録不可" do
+      item = build(:item, category_id: "")
+      item.valid?
+      expect(item.errors[:category_id]).to include("を入力してください")
     end
     # 16
     it "brandがなくても保存できる" do
@@ -99,10 +100,26 @@ describe Item do
       expect(item).to be_valid
     end
     # 18
-    it " categoryが空では登録不可" do
-      item = build(:item, category_id: "")
+    it "priceが10000000円以上だと登録不可" do
+      item = build(:item, price: 10000000)
       item.valid?
-      expect(item.errors[:category_id]).to include("を入力してください")
+      expect(item.errors[:price]).to include("は一覧にありません")
+    end
+    # 19
+    it "priceが9999999円だと登録可能" do
+      item = build(:item, price: 9999999)
+      expect(item).to be_valid
+    end
+     # 20
+     it "priceが299円以下だと登録不可" do
+      item = build(:item, price: 299)
+      item.valid?
+      expect(item.errors[:price]).to include("は一覧にありません")
+    end
+    # 21
+    it "priceが300円だと登録可能" do
+      item = build(:item, price: 300)
+      expect(item).to be_valid
     end
   end
 end
