@@ -15,35 +15,37 @@
       %ul.resultLists
     .nav
       %ul.listsLeft
-        = link_to "#", class: "category__search search__btn" do
-          カテゴリー
-        %ul.category__parent.category__list
-          - @parents.each do |parent|
-            %li
-              = link_to "#", class: "category__parent--name" do
-                = parent.name
-              %ul.category__child.category__list
-                - parent.children.each do |child|
-                  %li
-                    = link_to "#", class: "category__child--name" do
-                      = child.name
-                    %ul.category__grandchild.category__list
-                      - child.children.each do |grandchild|
-                        %li
-                          = link_to "#", class: " category__child--name" do
-                            = grandchild.name 
+        %li
+          = link_to "#", class: "category__search search__btn" do
+            カテゴリー
+          %div
+            %ul.category__parent.category__list.hide
+              - @parents.each do |parent|
+                %li
+                  = link_to "#", class: "category__parent--name" do
+                    = parent.name
+                  %ul.category__child.category__list
+                    - parent.children.each do |child|
+                      %li
+                        = link_to "#", class: "category__child__name" do
+                          = child.name
+                        %ul.category__grandchild.category__list
+                          - child.children.each do |grandchild|
+                            %li
+                              = link_to "#", class: " category__child__name" do
+                                = grandchild.name 
         %li.listsLeft__item
           = link_to "#" do 
             ブランド
           %ul.brandsPulldown.displayNone
       %ul.listsRight
         %li.listsRight__item.listsRight__item--login
-        -if user_signed_in?
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
-          = link_to "マイページ", user_path(current_user.id)
-        -else
-          = link_to "ログイン", new_user_session_path
-          = link_to "新規登録", new_user_registration_path
+          -if user_signed_in?
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "マイページ", user_path(current_user.id)
+          -else
+            = link_to "ログイン", new_user_session_path
+            = link_to "新規登録", new_user_registration_path
         %li.listsRight__item.listsRight__item--new
           = link_to "商品送付先住所情報", new_deliver_address_path
           = link_to "商品出品ページ" , new_item_path
