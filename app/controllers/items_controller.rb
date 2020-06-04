@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
       flash[:notice] = '商品を出品しました。'
       redirect_to root_path
     else
+      flash[:alert] = '商品の出品に失敗しました。必須部分は必ず記入してください。'
       render :new
     end
   end
