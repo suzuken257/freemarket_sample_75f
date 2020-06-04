@@ -40,7 +40,13 @@ class ItemsController < ApplicationController
 
   def edit
     @items = Item.find(params[:id])
-    @parents = Category.all.order("id ASC").limit(1315)
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
   end
 
   def update
@@ -152,7 +158,7 @@ class ItemsController < ApplicationController
 
  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-#選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+  #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find(params[:child_id]).children
     respond_to do |format|
       format.json

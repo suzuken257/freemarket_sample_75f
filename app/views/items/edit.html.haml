@@ -49,12 +49,14 @@
             .sell__main__content__form__box__group
               %label
                 カテゴリ
-                %span.form-require
-                  必須
-              .sell__main__content__form__box__group__select
-                = f.collection_select :category_id, Category.roots, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form"
-              .sell__main__content__form__box__group__child
-              .sell__main__content__form__box__group__grandchild
+              %span.form-require
+                必須
+              .sell__main__content__form__box__group
+                .sell__main__content__form__box__group__select
+                .sell__main__content__form__box__group__child
+                  = f.collection_select :category_id, @item.category.parent.siblings, :id, :name,{prompt: "---",selected:@item.category.parent.id}, class: "select-default", id: "child-form"
+                .sell__main__content__form__box__group__grandchild
+                  = f.collection_select :category_id, @item.category.siblings, :id, :name,{prompt: "---",selected:@item.category.id}, class: "select-default", id: "grandchild"
               %label
                 商品の状態
                 %span.form-require
