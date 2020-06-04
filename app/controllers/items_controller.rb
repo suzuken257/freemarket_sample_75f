@@ -6,8 +6,7 @@ class ItemsController < ApplicationController
   
   def index
     @parents = Category.where(ancestry: nil)
-    @items=Item.includes(:user, :item_image).order('created_at DESC')
-    @items=Item.all.order('created_at DESC')
+    @items=Item.includes(:user, :category).all.order('created_at DESC')
   end
 
   def show
