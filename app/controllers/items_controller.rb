@@ -6,14 +6,14 @@ class ItemsController < ApplicationController
   
   def index
     @parents = Category.where(ancestry: nil)
-    @items=Item.includes(:user, :category).all.order('created_at DESC')
+    @items = Item.includes(:user, :category).all.order('created_at DESC')
   end
 
   def show
-    @images=@item.item_images
+    @images = @item.item_images
     @image = @images.first
     @items = Item.find(params[:id])
-    @parents = Category.all.order("id ASC").limit(1315)
+    @parents = Category.order("id ASC").limit(1315)
   end
   
   
