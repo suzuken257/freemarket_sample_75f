@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren,]
 
   require 'payjp'
   
@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
     @images=@item.item_images
     @image = @images.first
     @items = Item.find(params[:id])
-    @parents = Category.all.order("id ASC").limit(1315)
+    @parents = Category.where( ancestry: nil)
+    @categories = Category.all.order("id ASC").limit(1315)
   end
   
   
@@ -39,6 +40,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @items = Item.find(params[:id])
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
   end
 
   def update
@@ -150,7 +159,7 @@ class ItemsController < ApplicationController
 
  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-#選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+  #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find(params[:child_id]).children
     respond_to do |format|
       format.json
