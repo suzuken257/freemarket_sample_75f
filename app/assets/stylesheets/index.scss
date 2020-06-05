@@ -75,37 +75,79 @@
       font-size: 14px;
       display: flex;
       margin-bottom: 10px;
-      &:hover{
-        .category__parent{
-          top: 122px;
-          display: block;
-          &--name{
-            width: 100%;
-            color: black;
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 13px;
-            letter-spacing: 2px;
+      justify-content: space-between;
+      .listsLeft{
+        display: flex;
+        li{
+          a{
+            margin-right: 25px;
+            text-decoration: none;
           }
-          li {
-            &:hover{
-              .category__child{
-                width: 100%;
+          &:hover{
+            div{
+              position: relative;
+              top: -15px;
+              .category__parent{
+                position: absolute;
+                top: 25px;
                 display: block;
-                top: 0;
-                left: 221px;
+                z-index: 1;
+                width: 240px;
+    
+                &--name{
+                  width: 100%;
+                  color: black;
+                  display: inline-block;
+                  padding: 10px 20px;
+                  font-size: 13px;
+                  letter-spacing: 2px;
+                }
                 li {
                   &:hover{
-                    .category__grandchild{
-                      width: 300px;
+                    .category__child{
+                      width: 100%;
                       display: block;
                       top: 0;
-                      left: 220px;
+                      left: 221px;
+                    .category__child__name {
+                      width: 100%;
+                      color: black;
+                      display: inline-block;
+                      padding: 10px 20px;
+                      font-size: 13px;
+                      letter-spacing: 2px;
+                    }
+                      li {
+                        &:hover{
+                          .category__child__name {
+                            width: 100%;
+                            color: black;
+                            display: inline-block;
+                            padding: 10px 20px;
+                            font-size: 13px;
+                            letter-spacing: 2px;
+                          }
+                          .category__grandchild{
+                            width: 300px;
+                            display: block;
+                            top: 0;
+                            left: 220px;
+                          }
+                        }
+                      }
                     }
                   }
                 }
               }
             }
+          }
+        }
+      }
+      .listsRight {
+        li {
+          a {
+            text-decoration: none;
+            margin-left: 25px;
           }
         }
       }
