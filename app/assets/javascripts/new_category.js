@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
 
   function buildHTML(categories){
     let options = ``
@@ -24,6 +24,8 @@ $(function(){
     })
     .done(function(data) {
       var html = buildHTML(data);
+      $('#child-form').remove(); //親が変更された時、子以下を削除するする
+      $('#grandchild').remove();
       $('.sell__main__content__form__box__group__child').append(html);
     })
   });
@@ -33,7 +35,7 @@ $(function(){
        options += `<option value=${category.id}}>${category.name}</option>`
     });
     var html =
-    `<select name="item[category_id]">
+    `<select name="item[category_id]", id="grandchild" >
     <option value="---">---${options}</option>
     </select>`
     return html;
@@ -50,6 +52,7 @@ $(function(){
     })
     .done(function(data) {
       var html = grandHTML(data);
+      $('#grandchild').remove();
       $('.sell__main__content__form__box__group__grandchild').append(html);
     })
   });
