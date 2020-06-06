@@ -5,7 +5,7 @@ class CreditCardsController < ApplicationController
 
   def new
     card = CreditCard.where(user_id: current_user.id)
-    redirect_to credit_card_path(current_user.id) if current_user.credit_card.exists?
+    redirect_to credit_card_path(current_user.id) if current_user.credit_cards.exists?
     @parents = Category.where(ancestry: nil)
   end
 
