@@ -1,0 +1,83 @@
+.l-container.clearfix {
+  width: 700px;
+  margin: 24px auto 0;
+  padding: 0 0 40px;
+  display: block;
+}
+
+.l-container.clearfix .l-content {
+  float: none;
+  width: 700px;
+}
+
+.l-container.clearfix .l-content .l-chapter-container {
+  margin: 0;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-chapter-head {
+  font-size: 24px;
+  padding: 8px 24px;
+  border-bottom: 1px solid #f5f5f5;
+  text-align: center;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-single-inner {
+  padding: 24px 16px 40px;
+  border-top: 1px solid;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-single-inner .l-single-content {
+  max-width: 343px;
+  margin: 0 auto;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-single-inner .l-single-content .form-group {
+  margin: 0;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-single-inner .l-single-content .form-group label {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-single-inner .l-single-content .form-group .form-require {
+  background: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-single-inner .l-single-content .form-group .form-arbitrary {
+  background: #ccc;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-single-inner .l-single-content .form-group .input-default {
+  width: 100%;
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.l-container.clearfix .l-content .l-chapter-container .l-single-inner .l-single-content .btn-default {
+  margin: 24px 0 0;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+/*# sourceMappingURL=deliver_addresses.css.map */

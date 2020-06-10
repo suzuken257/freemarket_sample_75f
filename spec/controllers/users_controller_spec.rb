@@ -3,7 +3,7 @@ require 'rails_helper'
 describe UsersController do
   let(:user) { create(:user) }
 
-  describe '#index' do
+  describe ' index' do
 
     context 'ログインしている場合' do
       before do

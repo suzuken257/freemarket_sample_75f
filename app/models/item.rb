@@ -5,10 +5,10 @@ class Item < ApplicationRecord
   
   belongs_to :user
   belongs_to :category
-  has_many :item_images, dependent: :destroy
+  has_many :item_images, dependent: :destroy, inverse_of: :item
   accepts_nested_attributes_for :item_images, allow_destroy: true
 
-  validates :item_images, length: {manimum: 1, maximum: 10}
+  validates :item_images, presence: true, length: {manimum: 1, maximum: 10} 
   validates :name, presence: true, profanity_filter: true, length: { maximum: 40 }
   validates :price, presence: true, inclusion: 300..9999999
   validates :introduction, presence: true, profanity_filter: true, length: { maximum: 1000 }
@@ -17,5 +17,4 @@ class Item < ApplicationRecord
   validates :shipping_area_from, presence: true
   validates :estimated_shipping_date, presence: true
   validates :category_id, presence: true
-
 end 
