@@ -11,8 +11,9 @@
       .login-form
         %button.btn-facebook
           %i.icon-facebook
-          Facebookでログイン
-        %button.btn-google Googleでログイン
+          = link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post
+        %button.btn-google
+          = link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post
       = form_with model: @user, url: new_user_session_path, id: 'login_user', class: 'login_user', local: true do |f|
         .login-form
           .form-group

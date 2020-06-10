@@ -42,6 +42,10 @@
           line-height: 48px;
           border: 1px solid transparent;
           position: relative;
+          a{
+            text-decoration: none;
+            color: white;
+          }
         }
         .btn-google {
           margin: 16px 0 0;
@@ -56,6 +60,9 @@
           transition: all ease-out .3s;
           cursor: pointer;
           text-align: center;
+          a{
+            text-decoration: none;
+          }
         }
       }
       .login-form {

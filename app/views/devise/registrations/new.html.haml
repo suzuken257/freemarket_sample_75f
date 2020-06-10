@@ -19,16 +19,19 @@
             %span.form-require 必須
             %br
             = f.email_field :email, placeholder: "PC・携帯どちらでも可",class:"login-input-text"
-          .form-group
-            =f.label:'パスワード'
-            %span.form-require 必須
-            %br
-            = f.password_field :password, autocomplete: "off", placeholder: "7文字以上", class:"login-input-text"
-          .form-group
-            =f.label:"パスワード(確認)"
-            %span.form-require 必須
-            %br
-            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "7文字以上",class:"login-input-text"
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
+            .form-group
+              =f.label:'パスワード'
+              %span.form-require 必須
+              %br
+              = f.password_field :password, autocomplete: "off", placeholder: "7文字以上", class:"login-input-text"
+            .form-group
+              =f.label:"パスワード(確認)"
+              %span.form-require 必須
+              %br
+              = f.password_field :password_confirmation, autocomplete: "off", placeholder: "7文字以上",class:"login-input-text"
           .form-group
             =f.label:"お名前(全角)"
             %span.form-require 必須
@@ -49,9 +52,6 @@
             = f.collection_select :birth_month, BirthMm.all, :id, :month, {prompt: '--'}, class: "birth-month"
             = f.collection_select :birth_day, BirthDd.all, :id, :day, {prompt: '--'}, class: "birth-day"
             %br/
-            -# = sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'select-box', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
-            -# %br/
-            -# %br/
           = f.submit "次へ", class: "login-submit"
   %footer.login-footer
     %nav
