@@ -6,7 +6,7 @@ FactoryBot.define do
     first_name_kana       {"けんと"}
     nickname              {"ナイケン"}
     introduction          {"よろしくお願いします。"}
-    email                 {"aaa@gmail.com"}
+    sequence(:email)       {|n| "#{n}aaa@gmail.com"}
     password              {"password"}
     password_confirmation {"password"}
     birth_year            {"2018"}

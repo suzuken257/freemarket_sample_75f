@@ -1,0 +1,28 @@
+.notification.is-info {
+  margin-bottom: 0;
+  height: 50px;
+  border-radius: 0;
+  background-color: blue;
+}
+
+.notice {
+  font-size: 1.5rem;
+  line-height: 50px;
+  color: white;
+  padding-left: 10px;
+}
+
+.notification.is-danger {
+  margin-bottom: 0;
+  height: 50px;
+  border-radius: 0;
+  background-color: #FF5192;
+}
+
+.alert {
+  font-size: 1.5rem;
+  line-height: 50px;
+  color: white;
+  padding-left: 10px;
+}
+/*# sourceMappingURL=flash-message.css.map */
